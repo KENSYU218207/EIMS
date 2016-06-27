@@ -1,6 +1,3 @@
-import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +8,7 @@ import bl.BusinessLogic;
 import to.Product;
 
 public class SearchServlet extends HttpServlet {
-	protected void doPost(HttpServletRequest request,
-							HttpServletResponse response)
-							throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ArrayList<Product> list = null;
 
@@ -45,7 +40,6 @@ public class SearchServlet extends HttpServlet {
 		}
 
 		// JSPÇ…åüçıåãâ Çì]ëóÇ∑ÇÈ
-		request.getRequestDispatcher("/search.jsp").
-			forward(request, response);
+		request.getRequestDispatcher("/search.jsp").forward(request, response);
 	}
 }
