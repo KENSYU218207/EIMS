@@ -23,6 +23,7 @@ public class SearchServlet extends HttpServlet {
 		String type = request.getParameter("category");
 		String keyword = request.getParameter("searchkey");
 		String userid = request.getParameter("userid");
+		String password = request.getParameter("password");
 
 
 
@@ -34,6 +35,7 @@ public class SearchServlet extends HttpServlet {
 		session.setAttribute("category", type);
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
+		session.setAttribute("password", password);
 /*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
@@ -51,25 +53,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("<body>");
 		out.println("<h1>ŒŸõƒy[ƒW</h1>");
 		out.println(userid);
-		out.println(dao.EmployerDao.checkPassword(userid));
+		out.print(password);
+		out.println(dao.EmployerDao.checkPassword(userid,password));
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
-		out.println("<select name=\"category\">");
-		if (type.equals("‚·‚×‚Ä"))
-			out.println("<option selected>‚·‚×‚Ä</option>");
-		else
-			out.println("<option>‚·‚×‚Ä</option>");
-		if (type.equals("lŒ^"))
-			out.println("<option selected>lŒ^</option>");
-		else
-			out.println("<option>lŒ^</option>");
-		if (type.equals("“®•¨Œ^"))
-			out.println("<option selected>“®•¨Œ^</option>");
-		else
-			out.println("<option>“®•¨Œ^</option>");
-		out.println("</select>");
 		out.println
 		("<input type=\"text\" name=\"searchkey\" size=\"20\" value=\""
-						+ keyword + "\">");
+						+ "" + "\">");
 		out.println("<input type=\"submit\" value=\"ŒŸõ\">");
 		out.println("</form>");
 

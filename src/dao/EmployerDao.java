@@ -16,33 +16,36 @@ public class EmployerDao {
 		this.con = con;
 	}
 
-	public static int checkPassword(String id){
+	public static boolean checkPassword(String id,String password){
 
 		Statement stmt = null;
 		ResultSet res = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
+//			Class.forName("com.mysql.jdbc.Driver");
+//			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
+			ConnectionManager cm = ConnectionManager.getConnectionManager();
+			con = cm.getConnection();
+
 			String sql = "SELECT "
-					+ "* "
-					+ "FROM employee ";
+					+ "password "
+					+ "FROM employee WHERE empno="
+					+id+" ";
 
 			stmt = con.createStatement();
 			res = stmt.executeQuery(sql);
 
-			return res.getRow();
+			while(res.next()){
+				if(res.getString("password").equals(password))return true;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO é©ìÆê∂ê¨Ç≥ÇÍÇΩ catch ÉuÉçÉbÉN
-			e.printStackTrace();
 		}
 
 
-		return 0;
+		return false;
 	}
 
 }
