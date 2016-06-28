@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bl.BusinessLogic;
 import to.Employee;
-import to.Product;
 
 public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
@@ -85,40 +83,54 @@ public class SearchServlet extends HttpServlet {
 		out.println("検索結果：" + count + "件");
 		out.println("<table width=\"98%\" border=\"0\">");
 		out.println("<tr>");
-		out.println("<th width=\"30%\">社員番号</th>");
-		out.println("<th width=\"30%\">氏名（フリガナ）</th>");
-		out.println("<th width=\"30%\">部署名</th>");
+		out.println("<th width=\"20%\">社員番号</th>");
+		out.println("<th width=\"20%\">氏</th>");
+		out.println("<th width=\"20%\">氏（フリガナ）</th>");
+		out.println("<th width=\"20%\">名</th>");
+		out.println("<th width=\"20%\">名（フリガナ）</th>");
+
+//		out.println("<th width=\"30%\">部署名</th>");
 //		out.println("<th rowspan=\"2\">商品購入</th>");
 		out.println("</tr>");
 		out.println("<tr>");
 		out.println("</tr>");
 		for (int i = 0; i < count; i++) {
 			String id = "";
-			String name = "";
-			String price = "";
-			String description = "";
-
+			String fname = "";
+			String fkana = "";
+			String lname  ="";
+			String lkana = "";
+			int description = 0;
 			Employee data = (Employee) list.get(i);
 
 			if (data != null) {
 				id = data.getId();
+				fname = data.getFname();
+				fkana = data.getFkana();
+				lname = data.getLname();
+				lkana = data.getLkana();
+
+
 			}
 			out.println("<tr class=\"product\">");
-			out.println("<td width=\"30%\">" + id + "</td>");
-			out.println("<td width=\"30%\">" + name + "</td>");
-			out.println("<td width=\"30%\">" + price + "</td>");
+			out.println("<td width=\"20%\">" + id + "</td>");
+			out.println("<td width=\"20%\">" + lname + "</td>");
+			out.println("<td width=\"20%\">" + lkana + "</td>");
+			out.println("<td width=\"20%\">" + fname + "</td>");
+			out.println("<td width=\"20%\">" + fkana + "</td>");
+
 			out.println
 			("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
 			out.println("<form action=\"CartServlet\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"product_id\" value=\""
 					+ id + "\">");
-			out.println("<input type=\"submit\" name=\"submit\" value=\"購入\">");
+			out.println("<input type=\"submit\" name=\"submit\" value=\"削除\">");
 			out.println("</form>");
 			out.println("</td>");
 			out.println("</tr>");
 			out.println("<tr>");
-			out.println("<td colspan=\"3\"><span class=\"description\">"
-					+ description + "</span></td>");
+		/*	out.println("<td colspan=\"3\"><span class=\"description\">"
+					+ description + "</span></td>");*/
 			out.println("</tr>");
 		}
 		out.println("</table>");

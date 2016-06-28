@@ -123,8 +123,15 @@ public class EmployerDao {
 				}
 
 				Employee data = new Employee();
-
+				//DBの中身を取得して社員インスタンスにセットする
 				data.setId(res.getString("empno"));
+				data.setFname(res.getString("fname"));
+				data.setFkana(res.getString("fkana"));
+				data.setLname(res.getString("lname"));
+				data.setLkana(res.getString("lkana"));
+
+
+
 
 				array.add(data);
 			}
