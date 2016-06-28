@@ -19,6 +19,13 @@
 		<servlet-name>ClearServlet</servlet-name>
 		<servlet-class>ClearServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Add</display-name>
+		<servlet-name>Add</servlet-name>
+		<servlet-class>Add</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SearchServlet</servlet-name>
 		<url-pattern>/SearchServlet</url-pattern>
@@ -30,6 +37,10 @@
 	<servlet-mapping>
 		<servlet-name>ClearServlet</servlet-name>
 		<url-pattern>/ClearServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Add</servlet-name>
+		<url-pattern>/Add</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
