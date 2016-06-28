@@ -22,7 +22,9 @@ public class SearchServlet extends HttpServlet {
 
 		String type = request.getParameter("category");
 		String keyword = request.getParameter("searchkey");
+		//ログイン画面で入力された社員番号格納
 		String userid = request.getParameter("userid");
+		//ログイン画面で入力されたパスワード格納
 		String password = request.getParameter("password");
 
 
@@ -52,9 +54,17 @@ public class SearchServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>検索ページ</h1>");
+		//社員番号の表示
 		out.println(userid);
-		out.print(password);
-		out.println(dao.EmployerDao.checkPassword(userid,password));
+		out.println("<br>");
+		//パスワードの表示
+		out.println(password);
+		out.println("<br>");
+		//各種チェック
+		out.println("パスワードチェック："+dao.EmployerDao.checkPassword(userid,password));
+		out.println("<br>");
+		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
+		out.println("<br>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println
 		("<input type=\"text\" name=\"searchkey\" size=\"20\" value=\""

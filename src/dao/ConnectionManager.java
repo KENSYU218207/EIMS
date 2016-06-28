@@ -29,7 +29,7 @@ public class ConnectionManager {
   private ConnectionManager() {
     try {
 		Context context = new InitialContext();
-		ds = (DataSource)context.lookup("java:comp/env/jdbc/eimsdb");
+		ds = (DataSource)context.lookup("java:comp/env/jdbc/MySQLDB");
     } catch (NamingException e) {
       e.printStackTrace();
     }
