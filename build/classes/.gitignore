@@ -4,8 +4,9 @@
 /bl/
 /dao/
 /to/
-/logonControler.class
-/Controler/
-/controller/
 /AddServlet.class
+<<<<<<< HEAD
+/controller/
+=======
 /LogonServlet.class
+>>>>>>> 8dc7fbdf0a14872ee982c9cd0d4556fd15593674
