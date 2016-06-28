@@ -1,17 +1,17 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.*;
 
 import to.Employee;
-import to.Product;
 
 public class EmployerDao {
 	private static Connection con; // コネクション
+	private static boolean bool = false;
 
 	public EmployerDao(Connection con) {
 		this.con = con;
@@ -128,6 +128,17 @@ public class EmployerDao {
 			e.printStackTrace();
 		}
 		return array;
+	}
+
+	public static void checkType(String type) {
+		try {
+			int check = Integer.parseInt(type);
+			bool = true;
+		}
+		catch (NumberFormatException e) {
+			e.printStackTrace();
+			bool = false;
+		}
 	}
 
 }
