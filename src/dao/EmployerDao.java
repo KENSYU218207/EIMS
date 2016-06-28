@@ -11,7 +11,6 @@ import to.Employee;
 
 public class EmployerDao {
 	private static Connection con; // コネクション
-	private static boolean bool = false;
 
 	public EmployerDao(Connection con) {
 		this.con = con;
@@ -100,18 +99,36 @@ public class EmployerDao {
 		return false;
 	}
 
-	public static ArrayList<Employee> selectEmployees() {
+	public static ArrayList<Employee> selectEmployees(String keyword) {
 		ArrayList<Employee> array = null;
 		Statement stmt = null;
 		ResultSet res = null;
 
 		try {
+			boolean bool = false;//checkType(keyword);
+
+
 			String sql = null;
 			if (bool == true) {
-				sql = "SELECT lname, fname, lkana, fkana, department.deptname, employee.deptno FROM employee LEFT JOIN department ON employee.deptno = department.deptno";
+				sql = "SELECT * "
+						+ "FROM employee LEFT OUTER JOIN department "
+						+ "ON employee.deptno = department.deptno "
+						+ "WHERE lname = " + "'" + keyword + "'" + " "
+						+ "OR fname = " + "'" + keyword + "'" + " "
+						+ "OR lkana = " + "'" + keyword + "'" + " "
+						+ "OR fkana = " + "'" + keyword + "'" + " "
+						+ "OR department.deptname = " + "'" + keyword + "'" + " "
+						+ "OR employee.deptno = " + "'" + keyword + "'" + " ";
 			}
 			else if (bool == false) {
-				sql = "SELECT lname, fname, lkana, fkana, department.deptname FROM employee LEFT JOIN department ON employee.deptno = department.deptno";
+				sql = "SELECT * "
+						+ "FROM employee LEFT JOIN department "
+						+ "ON employee.deptno = department.deptno "
+						+ "WHERE lname = " + "'" + keyword + "'" + " "
+						+ "OR fname = " + "'" + keyword + "'" + " "
+						+ "OR lkana = " + "'" + keyword + "'" +" "
+						+ "OR fkana = " + "'" + keyword + "'" + " "
+						+ "OR department.deptname = " + "'" + keyword + "'" + " ";
 			}
 
 			stmt = con.createStatement();
@@ -129,6 +146,7 @@ public class EmployerDao {
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
 				data.setLkana(res.getString("lkana"));
+
 				array.add(data);
 			}
 		} catch (SQLException e) {
@@ -139,14 +157,15 @@ public class EmployerDao {
 		return array;
 	}
 
-	public static void checkType(String type) {
+	public static boolean checkType(String type) {
+
 		try {
 			int check = Integer.parseInt(type);
-			bool = true;
+			return true;
 		}
 		catch (NumberFormatException e) {
 			e.printStackTrace();
-			bool = false;
+			return false;
 		}
 	}
 

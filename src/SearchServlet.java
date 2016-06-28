@@ -41,7 +41,7 @@ public class SearchServlet extends HttpServlet {
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
-		list = dao.EmployerDao.selectEmployees();
+		list = dao.EmployerDao.selectEmployees(keyword);
 
 		response.setContentType("text/html; charset=Windows-31J");
 
@@ -60,6 +60,9 @@ public class SearchServlet extends HttpServlet {
 		out.println("<br>");
 		//パスワードの表示
 		out.println(password);
+		out.println("<br>");
+		//パスワードの表示
+		out.println(keyword);
 		out.println("<br>");
 		//各種チェック
 		//password と人事部チェック
