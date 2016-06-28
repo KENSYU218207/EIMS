@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.*;
 
+import to.Employee;
 import to.Product;
 
 public class EmployerDao {
@@ -97,6 +98,36 @@ public class EmployerDao {
 
 		//’N‚É‚àˆø‚Á‚©‚©‚ç‚È‚¯‚ê‚Îfalse‚ð•Ô‚·
 		return false;
+	}
+
+	public static ArrayList<Employee> selectEmployees() {
+		ArrayList<Employee> array = null;
+		Statement stmt = null;
+		ResultSet res = null;
+
+		try {
+			String sql = "SELECT * FROM employee ";
+
+			stmt = con.createStatement();
+			res = stmt.executeQuery(sql);
+
+			while (res.next()) {
+				if (array == null) {
+					array = new ArrayList<Employee>();
+				}
+
+				Employee data = new Employee();
+
+				data.setId(res.getString("empno"));
+
+				array.add(data);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		return array;
 	}
 
 }

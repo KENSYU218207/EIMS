@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bl.BusinessLogic;
+import to.Employee;
 import to.Product;
 
 public class SearchServlet extends HttpServlet {
@@ -16,7 +17,7 @@ public class SearchServlet extends HttpServlet {
 							HttpServletResponse response)
 							throws ServletException, IOException {
 
-		ArrayList<Product> list = null;
+		ArrayList<Employee> list = null;
 
 		request.setCharacterEncoding("Windows-31J");
 
@@ -42,6 +43,8 @@ public class SearchServlet extends HttpServlet {
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
+		list = dao.EmployerDao.selectEmployees();
+
 		response.setContentType("text/html; charset=Windows-31J");
 
 		PrintWriter out = response.getWriter();
@@ -73,12 +76,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("</form>");
 
 		out.println("<br>");
-/*
+
 		int count = 0;
 		if (list != null) {
 			count = list.size();
 		}
-*//*
+
 		out.println("åüçıåãâ ÅF" + count + "åè");
 		out.println("<table width=\"98%\" border=\"0\">");
 		out.println("<tr>");
@@ -96,13 +99,10 @@ public class SearchServlet extends HttpServlet {
 			String price = "";
 			String description = "";
 
-			Product data = (Product) list.get(i);
+			Employee data = (Employee) list.get(i);
 
 			if (data != null) {
 				id = data.getId();
-				name = data.getName();
-				price = "\\" + data.getPrice();
-				description = data.getDescription();
 			}
 			out.println("<tr class=\"product\">");
 			out.println("<td width=\"30%\">" + id + "</td>");
@@ -122,7 +122,7 @@ public class SearchServlet extends HttpServlet {
 					+ description + "</span></td>");
 			out.println("</tr>");
 		}
-		out.println("</table>");*/
+		out.println("</table>");
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
