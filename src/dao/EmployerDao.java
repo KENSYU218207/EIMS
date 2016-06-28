@@ -11,6 +11,7 @@ import to.Employee;
 
 public class EmployerDao {
 	private static Connection con; // コネクション
+	private static boolean bool = false;
 
 	public EmployerDao(Connection con) {
 		this.con = con;
@@ -134,6 +135,17 @@ public class EmployerDao {
 			e.printStackTrace();
 		}
 		return array;
+	}
+
+	public static void checkType(String type) {
+		try {
+			int check = Integer.parseInt(type);
+			bool = true;
+		}
+		catch (NumberFormatException e) {
+			e.printStackTrace();
+			bool = false;
+		}
 	}
 
 }
