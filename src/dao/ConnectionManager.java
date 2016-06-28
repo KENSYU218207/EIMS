@@ -7,10 +7,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class ConnectionManager {  
+public class ConnectionManager {
   // 自インスタンス
   private static ConnectionManager instance = null;
-  
+
   private DataSource ds = null;
 
   /*
@@ -29,7 +29,7 @@ public class ConnectionManager {
   private ConnectionManager() {
     try {
 		Context context = new InitialContext();
-		ds = (DataSource)context.lookup("java:comp/env/jdbc/MySQLDB");
+		ds = (DataSource)context.lookup("java:comp/env/jdbc/eimsdb");
     } catch (NamingException e) {
       e.printStackTrace();
     }
@@ -40,7 +40,7 @@ public class ConnectionManager {
    */
   public synchronized Connection getConnection() throws SQLException {
     Connection conn = null;
-    
+
     try {
       conn = ds.getConnection();
     } catch (SQLException e) {

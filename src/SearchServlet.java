@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import bl.BusinessLogic;
 import to.Product;
-import dao.EmployerDao;
 
 public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
@@ -35,10 +34,10 @@ public class SearchServlet extends HttpServlet {
 		session.setAttribute("category", type);
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
-
+/*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
-
+*/
 		response.setContentType("text/html; charset=Windows-31J");
 
 		PrintWriter out = response.getWriter();
@@ -75,12 +74,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("</form>");
 
 		out.println("<br>");
-
+/*
 		int count = 0;
 		if (list != null) {
 			count = list.size();
 		}
-
+*//*
 		out.println("åüçıåãâ ÅF" + count + "åè");
 		out.println("<table width=\"98%\" border=\"0\">");
 		out.println("<tr>");
@@ -124,7 +123,7 @@ public class SearchServlet extends HttpServlet {
 					+ description + "</span></td>");
 			out.println("</tr>");
 		}
-		out.println("</table>");
+		out.println("</table>");*/
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
