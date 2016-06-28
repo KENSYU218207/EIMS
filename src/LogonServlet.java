@@ -17,7 +17,7 @@ import to.Employee;
  */
 public class LogonServlet extends HttpServlet {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Employee> list = null;
 
 		request.setCharacterEncoding("Windows-31J");
