@@ -129,10 +129,6 @@ public class EmployerDao {
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
 				data.setLkana(res.getString("lkana"));
-
-
-
-
 				array.add(data);
 			}
 		} catch (SQLException e) {
