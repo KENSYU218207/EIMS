@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.LogonController;
 import to.Employee;
-
 public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 							HttpServletResponse response)
@@ -62,9 +62,11 @@ public class SearchServlet extends HttpServlet {
 		out.println(password);
 		out.println("<br>");
 		//各種チェック
-		out.println("パスワードチェック："+dao.EmployerDao.checkPassword(userid,password));
+		//password と人事部チェック
+		LogonController.sendLogon(userid, password);
+		/*out.println("パスワードチェック："+ LogonController.sendLogon(userid,password));
 		out.println("<br>");
-		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
+		out.println("人事部チェック"+ LogonController.se);*/
 		out.println("<br>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println
