@@ -85,13 +85,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("検索結果：" + count + "件");
 		out.println("<table width=\"98%\" border=\"0\">");
 		out.println("<tr>");
-		out.println("<th width=\"30%\">商品コード</th>");
-		out.println("<th width=\"30%\">商品名</th>");
-		out.println("<th width=\"30%\">価格</th>");
-		out.println("<th rowspan=\"2\">商品購入</th>");
+		out.println("<th width=\"30%\">社員番号</th>");
+		out.println("<th width=\"30%\">氏名（フリガナ）</th>");
+		out.println("<th width=\"30%\">部署名</th>");
+//		out.println("<th rowspan=\"2\">商品購入</th>");
 		out.println("</tr>");
 		out.println("<tr>");
-		out.println("<th colspan=\"3\">商品の説明</th>");
 		out.println("</tr>");
 		for (int i = 0; i < count; i++) {
 			String id = "";
