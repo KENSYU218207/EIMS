@@ -106,7 +106,13 @@ public class EmployerDao {
 		ResultSet res = null;
 
 		try {
-			String sql = "SELECT * FROM employee ";
+			String sql = null;
+			if (bool == true) {
+				sql = "SELECT lname, fname, lkana, fkana, department.deptname, employee.deptno FROM employee LEFT JOIN department ON employee.deptno = department.deptno";
+			}
+			else if (bool == false) {
+				sql = "SELECT lname, fname, lkana, fkana, department.deptname FROM employee LEFT JOIN department ON employee.deptno = department.deptno";
+			}
 
 			stmt = con.createStatement();
 			res = stmt.executeQuery(sql);
