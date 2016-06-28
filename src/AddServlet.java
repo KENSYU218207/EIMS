@@ -31,7 +31,7 @@ public class AddServlet extends HttpServlet {
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
-		list = dao.EmployerDao.selectEmployees();
+//		list = dao.EmployerDao.selectEmployees();
 
 		response.setContentType("text/html; charset=Windows-31J");
 
@@ -51,6 +51,18 @@ public class AddServlet extends HttpServlet {
 		out.println("<br>");
 		out.println("<br>");
 		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
+
+		out.println("<form action=\"SearchServlet\" method=\"post\">");
+		 out.println("社員番号：<input type=\"text\" name=\"addlname\" size=\"20\"><br>");
+		 out.println("社員番号：<input type=\"text\" name=\"addfname\" size=\"20\"><br>");
+		 out.println("社員番号：<input type=\"text\" name=\"addlkana\" size=\"20\"><br>");
+		 out.println("社員番号：<input type=\"text\" name=\"addfkana\" size=\"20\"><br>");
+		 out.println("パスワード：<input type=\"password\" name=\"addpassword\" size=\"20\"><br>");
+		 out.println("性別：<input type=\"radio\" name=\"addgender\" value=\"male\">男性    <input type=\"radio\" name=\"addgender\" value=\"female\">女性<br>");
+		 out.println("所属先：リストボックスをここに作る<br>");
+		 out.println("<input type=\"submit\" value=\"追加する\">");
+		 out.println("</form>");
+
 		out.println("<br>");
 
 		out.println("<br>");

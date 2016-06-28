@@ -44,7 +44,7 @@ public class LogonServlet extends HttpServlet {
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
-		list = dao.EmployerDao.selectEmployees();
+//		list = dao.EmployerDao.selectEmployees();
 
 		response.setContentType("text/html; charset=Windows-31J");
 
