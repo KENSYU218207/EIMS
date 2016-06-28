@@ -1,14 +1,13 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.*;
 
 import to.Employee;
-import to.Product;
 
 public class EmployerDao {
 	private static Connection con; // コネクション
@@ -117,8 +116,15 @@ public class EmployerDao {
 				}
 
 				Employee data = new Employee();
-
+				//DBの中身を取得して社員インスタンスにセットする
 				data.setId(res.getString("empno"));
+				data.setFname(res.getString("fname"));
+				data.setFkana(res.getString("fkana"));
+				data.setLname(res.getString("lname"));
+				data.setLkana(res.getString("lkana"));
+
+
+
 
 				array.add(data);
 			}

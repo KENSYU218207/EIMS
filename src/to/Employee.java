@@ -6,8 +6,15 @@ public class Employee {
 	private String fname = null;//名前
 	private String lkana = null;//苗字カナ
 	private String fkana = null;//名前カナ
+	private int gender;
 
 
+	public int getGender() {
+		return gender;
+	}
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -15,7 +22,7 @@ public class Employee {
 		this.lname = lname;
 	}
 	public void setFname(String fname) {
-		this.lname = fname;
+		this.fname = fname;
 	}
 	public void setLkana(String lkana) {
 		this.lkana = lkana;
