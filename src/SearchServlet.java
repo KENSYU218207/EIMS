@@ -75,6 +75,11 @@ public class SearchServlet extends HttpServlet {
 		out.println("<input type=\"submit\" value=\"ŒŸõ\">");
 		out.println("</form>");
 
+		if(dao.EmployerDao.checkJinji(userid)){
+		out.println("<form action=\"AddServlet\" method=\"post\">");
+		out.println("<input type=\"submit\" value=\"’Ç‰Á\">");
+		out.println("</form>");
+		}
 		out.println("<br>");
 
 		int count = 0;
