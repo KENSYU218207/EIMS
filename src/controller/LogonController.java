@@ -1,5 +1,6 @@
 package controller;
 
+//ログオンの際に必要な制御クラス
 public class LogonController {
 
 	// メソッド：ログオンを依頼する

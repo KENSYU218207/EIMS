@@ -1,6 +1,6 @@
 package controller;
 
-//削除機能の制御クラス
+//削除の際に必要な制御クラス
 public class DeleteController {
 
 }
