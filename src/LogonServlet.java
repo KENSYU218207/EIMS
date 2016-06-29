@@ -22,8 +22,7 @@ public class LogonServlet extends HttpServlet {
 
 		request.setCharacterEncoding("Windows-31J");
 
-		String type = request.getParameter("category");
-		String keyword = request.getParameter("searchkey");
+
 		//ログイン画面で入力された社員番号格納
 		String userid = request.getParameter("userid");
 		//ログイン画面で入力されたパスワード格納
@@ -32,12 +31,7 @@ public class LogonServlet extends HttpServlet {
 
 
 		HttpSession session = request.getSession();
-		if(type==null || keyword == null){
-			type=(String)session.getAttribute("category");
-			keyword=(String)session.getAttribute("searchkey");
-		}
-		session.setAttribute("category", type);
-		session.setAttribute("searchkey", keyword);
+
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
 

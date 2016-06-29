@@ -7,8 +7,22 @@ public class Employee {
 	private String lkana = null;//苗字カナ
 	private String fkana = null;//名前カナ
 	private int gender;
+	private String password;
 
+	public Employee(){
 
+	}
+	public Employee(String id, String password) {
+		super();
+		this.id = id;
+		this.password = password;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getGender() {
 		return gender;
 	}

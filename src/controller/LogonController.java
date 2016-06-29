@@ -1,5 +1,7 @@
 package controller;
 
+import to.Employee;
+
 public class LogonController {
 
 	// メソッド：ログオンを依頼する
@@ -7,7 +9,7 @@ public class LogonController {
 		// ログオン画面で入力された[社員番号・パスワード]を社員DAOに引き渡す
 
 		// 社員オブジェクトのインスタンスを生成
-
+		Employee emp = new Employee(userid, password);
 		// 認証エラーの場合、ポップアップ表示
 		if (dao.EmployerDao.checkPassword(userid, password) == false) {
 			System.out.println("error password");
