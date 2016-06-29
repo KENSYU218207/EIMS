@@ -141,7 +141,7 @@ public class EmployerDao {
 
 				Employee data = new Employee();
 				//DBの中身を取得して社員インスタンスにセットする
-				data.setId(res.getString("empno"));
+				data.setEmpno(res.getInt("empno"));
 				data.setFname(res.getString("fname"));
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
@@ -191,7 +191,7 @@ public static ArrayList<Employee> deleteSelectEmployees(String emptno) {
 
 				Employee data = new Employee();
 				//DBの中身を取得して社員インスタンスにセットする
-				data.setId(res.getString("empno"));
+				data.setEmpno(res.getInt("empno"));
 				data.setFname(res.getString("fname"));
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
@@ -234,7 +234,7 @@ public static ArrayList<Employee> deleteSelectEmployees(String emptno) {
 
 				Employee data = new Employee();
 				//DBの中身を取得して社員インスタンスにセットする
-				data.setId(res.getString("empno"));
+				data.setEmpno(res.getInt("empno"));
 				data.setFname(res.getString("fname"));
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
@@ -248,6 +248,61 @@ public static ArrayList<Employee> deleteSelectEmployees(String emptno) {
 			e.printStackTrace();
 		}
 		return array;
+	}
+
+	public static boolean addEmployee(Employee employee){
+		String empno,lname,fname,lkana,fkana,password,gender,deptno;
+
+		Statement stmt = null;
+		ResultSet res = null;
+		try {
+			//Connectionの設定
+			Class.forName("com.mysql.jdbc.Driver");
+			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
+//			ConnectionManager cm = ConnectionManager.getConnectionManager();
+//			con = cm.getConnection();
+
+			//SQL文の設定（持ってきた社員番号に一致する人を取得）
+			String sql = "INSERT "
+					+"employee "
+					+"VALUES "
+					+"("
+					+1000//empno
+					+","
+					+"'"+"田中"+"'"//lname
+					+","
+					+"'"+"太郎"+"'"//fname
+					+","
+					+"'"+"タナカ"+"'"//lkana
+					+","
+					+"'"+"タロウ"+"'"//fkana
+					+","
+					+"'"+"tanatana"+"'"//password
+					+","
+					+1//gender
+					+","
+					+200//deptno
+					+")"
+					+" ";
+
+			//SQL文投げる
+			stmt = con.createStatement();
+			res = stmt.executeQuery(sql);
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			//追加に失敗した場合はfalseを返す
+			return false;
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return false;
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 }

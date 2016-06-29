@@ -116,6 +116,7 @@ public class SearchServlet extends HttpServlet {
 		out.println("<th width=\"20%\">氏（フリガナ）</th>");
 		out.println("<th width=\"20%\">名</th>");
 		out.println("<th width=\"20%\">名（フリガナ）</th>");
+		out.println("<th width=\"20%\">部署名</th>");
 
 		// out.println("<th width=\"30%\">部署名</th>");
 		// out.println("<th rowspan=\"2\">商品購入</th>");
@@ -123,23 +124,24 @@ public class SearchServlet extends HttpServlet {
 		out.println("<tr>");
 		out.println("</tr>");
 		for (int i = 0; i < count; i++) {
-			String id = "";
+			int id = 0;
 			String fname = "";
 			String fkana = "";
 			String lname = "";
 			String lkana = "";
-			int description = 0;
+			String dept = "";
 			Employee data = (Employee) list.get(i);
 
 			if (data != null) {
-				id = data.getId();
+				id = data.getEmpno();
 				fname = data.getFname();
 				fkana = data.getFkana();
 				lname = data.getLname();
 				lkana = data.getLkana();
+//				dept = data.get
 
 			}
-			out.println("<tr class=\"product\">");
+			out.println("<tr class=\"emp\">");
 			out.println("<td width=\"20%\">" + id + "</td>");
 			out.println("<td width=\"20%\">" + lname + "</td>");
 			out.println("<td width=\"20%\">" + lkana + "</td>");
@@ -148,8 +150,22 @@ public class SearchServlet extends HttpServlet {
 
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
 			out.println("<form action=\"CartServlet\" method=\"post\">");
-			out.println("<input type=\"hidden\" name=\"product_id\" value=\"" + id + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
 			out.println("<input type=\"submit\" name=\"submit\" value=\"削除\">");
+			out.println("</form>");
+			out.println("</td>");
+			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
+			out.println("<form action=\"EditServlet\" method=\"post\">");
+			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
+			out.println("<input type=\"submit\" name=\"submit\" value=\"変更\">");
 			out.println("</form>");
 			out.println("</td>");
 			out.println("</tr>");

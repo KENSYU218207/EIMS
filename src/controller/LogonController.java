@@ -2,6 +2,12 @@ package controller;
 
 import to.Employee;
 
+
+//ログオンの際に必要な制御クラス
+
+import to.Employee;
+
+
 public class LogonController {
 
 	// メソッド：ログオンを依頼する
@@ -23,12 +29,11 @@ public class LogonController {
 	}
 
 	// メソッド：ログアウトを依頼する
+	// ログオンしている状態のユーザが、ログアウトした場合に呼び出される
 	public void sendLogout() {
-		// ログオンしている状態のユーザが、ログアウトした場合に呼び出される
-
 		// 社員オブジェクトの破棄
 
-		// 検索制御（SearchController）に、検索結果の社員リストの破棄を依頼する
+		// 検索制御（SearchController）に、検索結果の社員リストの破棄を依頼
 
 	}
 }
