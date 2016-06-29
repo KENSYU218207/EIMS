@@ -39,8 +39,17 @@ public class SearchServlet extends HttpServlet {
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
+<<<<<<< HEAD
 
 		list = dao.EmployerDao.selectEmployees(keyword);
+=======
+		System.out.println("2"+keyword);
+/*
+		BusinessLogic bl = new BusinessLogic();
+		list = bl.selectProducts(type, keyword);
+*/
+//		list = dao.EmployerDao.selectEmployees(keyword);
+>>>>>>> d2744e00f8586393c24d3ed08ee1404c034ca4e6
 
 		response.setContentType("text/html; charset=Windows-31J");
 

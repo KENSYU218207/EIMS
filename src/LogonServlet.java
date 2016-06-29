@@ -41,7 +41,12 @@ public class LogonServlet extends HttpServlet {
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
 
-		list = dao.EmployerDao.selectEmployees(keyword);
+/*
+		BusinessLogic bl = new BusinessLogic();
+		list = bl.selectProducts(type, keyword);
+*/
+//		list = dao.EmployerDao.selectEmployees();
+
 
 		response.setContentType("text/html; charset=Windows-31J");
 

@@ -2,30 +2,31 @@ package controller;
 
 public class LogonController {
 
-	// ログオンを依頼する	認証エラーはポップアップ表示
-	public static  void sendLogon(String userid, String password) {
+	// メソッド：ログオンを依頼する
+	public static void sendLogon(String userid, String password) {
+		// ログオン画面で入力された[社員番号・パスワード]を社員DAOに引き渡す
 
-		if(dao.EmployerDao.checkPassword(userid, password) == false){
-			//ポップアップ表示
+		// 社員オブジェクトのインスタンスを生成
+
+		// 認証エラーの場合、ポップアップ表示
+		if (dao.EmployerDao.checkPassword(userid, password) == false) {
 			System.out.println("error password");
 		}
 
-		if(dao.EmployerDao.checkJinji(userid)){
-			//追加、削除可能にする
+		// 社員が人事である場合、追加削除変更を可能にする
+		if (dao.EmployerDao.checkJinji(userid)) {
 			System.out.println("you are jinji");
 		}
 
 	}
 
-	// ログアウトを依頼する
+	// メソッド：ログアウトを依頼する
 	public void sendLogout() {
+		// ログオンしている状態のユーザが、ログアウトした場合に呼び出される
 
+		// 社員オブジェクトの破棄
 
-	}
-
-
-	// 社員オブジェクトの破棄を依頼する
-	public void sendEmployee() {
+		// 検索制御（SearchController）に、検索結果の社員リストの破棄を依頼する
 
 	}
 }
