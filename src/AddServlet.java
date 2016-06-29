@@ -23,15 +23,19 @@ public class AddServlet extends HttpServlet {
 		request.setCharacterEncoding("Windows-31J");
 
 		//ƒƒOƒCƒ“‰æ–Ê‚Å“ü—Í‚³‚ê‚½Ğˆõ”Ô†Ši”[
+
 //		String userid = request.getParameter("userid");
 
 //		HttpSession session = request.getSession();
 //		session.setAttribute("userid", userid);
+
 /*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
+
 //		list = dao.EmployerDao.selectEmployees();
+
 
 		response.setContentType("text/html; charset=Windows-31J");
 

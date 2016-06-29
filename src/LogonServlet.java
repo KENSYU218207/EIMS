@@ -40,11 +40,13 @@ public class LogonServlet extends HttpServlet {
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
+
 /*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
 //		list = dao.EmployerDao.selectEmployees();
+
 
 		response.setContentType("text/html; charset=Windows-31J");
 
@@ -53,13 +55,29 @@ public class LogonServlet extends HttpServlet {
 		out.println("<head>");
 		out.println("<TITLE>ログインページ</TITLE>");
 		    out.println("<LINK rel=\"stylesheet\"href=\"exercise.css\" type=\"text/css\">");
+
+		    out.println("<script type=\"text/javascript\">");
+		    out.println("<!--");
+		    out.println("function disp(){");
+		    	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+		    out.println("if(window.confirm('ログオンエラー')){");
+		    out.println("location.href = \"http://localhost:8080/EIMS/LogonServlet\";");
+		    out.println("}");
+		    out.println("else{");
+		    out.println("window.alert('キャンセルされました'); ");		// 警告ダイアログを表示
+		    out.println("}");
+		    	// 「キャンセル」時の処理終了
+		    out.println("}");
+		    out.println(" // -->");
+		    out.println(" </script>");
+
 		 out.println("</head>");
 		 out.println("<body>");
 		 out.println("<h1>ログインページ</h1>");
 		 out.println("<form action=\"SearchServlet\" method=\"post\">");
 		 out.println("社員番号：<input type=\"text\" name=\"userid\" size=\"20\"><br>");
 		 out.println("パスワード：<input type=\"password\" name=\"password\" size=\"20\"><br>");
-		 out.println("<input type=\"submit\" value=\"ログイン\">");
+		 out.println("<input type=\"submit\" value=\"ログイン\" onClick=\"disp()\"> ");
 		 out.println("</form>");
 		 out.println("<form action=\"AddServlet\" method=\"post\">");
 		 out.println("  社員番号：<input type=\"text\" name=\"userid\" size=\"20\"><br>");

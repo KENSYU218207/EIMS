@@ -19,7 +19,7 @@ public class SearchServlet extends HttpServlet {
 
 		request.setCharacterEncoding("Windows-31J");
 
-		String type = request.getParameter("category");
+		//String type = request.getParameter("category");
 		String keyword = request.getParameter("searchkey");
 		//ƒƒOƒCƒ“‰æ–Ê‚Å“ü—Í‚³‚ê‚½Ğˆõ”Ô†Ši”[
 		String userid = request.getParameter("userid");
@@ -29,14 +29,15 @@ public class SearchServlet extends HttpServlet {
 
 
 		HttpSession session = request.getSession();
-		if(type==null || keyword == null){
-			type=(String)session.getAttribute("category");
-			keyword=(String)session.getAttribute("searchkey");
-		}
-		session.setAttribute("category", type);
+
+			//type=(String)session.getAttribute("category");
+		keyword=(String)session.getAttribute("searchkey");
+		System.out.println("1"+keyword);
+		//session.setAttribute("category", type);
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
+		System.out.println("2"+keyword);
 /*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
@@ -73,8 +74,7 @@ public class SearchServlet extends HttpServlet {
 		out.println("<br>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println
-		("<input type=\"text\" name=\"searchkey\" size=\"20\" value=\""
-						+ "" + "\">");
+		("<input type=\"text\" name=\"searchkey\" size=\"20\" value=\"\">");
 		out.println("<input type=\"submit\" value=\"ŒŸõ\">");
 		out.println("</form>");
 
