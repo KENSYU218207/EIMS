@@ -16,7 +16,7 @@ public class Employee {
 	}
 	public Employee(String id, String password) {
 		super();
-		this.id = id;
+		this.empno = Integer.parseInt(id);
 		this.password = password;
 	}
 	public String getPassword() {

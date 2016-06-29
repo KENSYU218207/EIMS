@@ -138,7 +138,7 @@ public class SearchServlet extends HttpServlet {
 				fkana = data.getFkana();
 				lname = data.getLname();
 				lkana = data.getLkana();
-				dept = data.get
+//				dept = data.get
 
 			}
 			out.println("<tr class=\"emp\">");
