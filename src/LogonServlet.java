@@ -45,7 +45,7 @@ public class LogonServlet extends HttpServlet {
 		out.println("<TITLE>ログインページ</TITLE>");
 		out.println("<LINK rel=\"stylesheet\"href=\"exercise.css\" type=\"text/css\">");
 
-		out.println("<script type=\"text/javascript\">");
+/*		out.println("<script type=\"text/javascript\">");
 		out.println("<!--");
 		out.println("function disp(){");
 		// 「OK」時の処理開始 ＋ 確認ダイアログの表示
@@ -58,7 +58,7 @@ public class LogonServlet extends HttpServlet {
 		// 「キャンセル」時の処理終了
 		out.println("}");
 		out.println(" // -->");
-		out.println(" </script>");
+		out.println(" </script>");*/
 
 		out.println("</head>");
 		out.println("<body>");
@@ -67,11 +67,6 @@ public class LogonServlet extends HttpServlet {
 		out.println("社員番号：<input type=\"text\" name=\"userid\" size=\"20\"><br>");
 		out.println("パスワード：<input type=\"password\" name=\"password\" size=\"20\"><br>");
 		out.println("<input type=\"submit\" value=\"ログイン\" onClick=\"disp()\"> ");
-		out.println("</form>");
-		out.println("<form action=\"AddServlet\" method=\"post\">");
-		out.println("  社員番号：<input type=\"text\" name=\"userid\" size=\"20\"><br>");
-		out.println("パスワード：<input type=\"password\" name=\"password\" size=\"20\"><br>");
-		out.println("<input type=\"submit\" value=\"追加\">");
 		out.println("</form>");
 		out.println(" </body>");
 		out.println("</html>");
