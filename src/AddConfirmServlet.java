@@ -65,7 +65,7 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<br>");
 //		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
-		out.println("<form action=\"AddController\" method=\"post\">");
+//		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println("<h2>以下の情報で登録します。よろしいですか？</h2>");
 		out.println(empno);
 		out.println("<br>");

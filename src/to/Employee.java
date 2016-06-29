@@ -1,15 +1,12 @@
 package to;
 
 public class Employee {
-	private int empno = 0; // 社員番号
+	private String id = null; // 社員番号
 	private String lname = null;//苗字
 	private String fname = null;//名前
 	private String lkana = null;//苗字カナ
 	private String fkana = null;//名前カナ
-	private String password = null;//パスワード
-	private int gender=0;//性別
-	private int deptno=0;//所属コード
-
+	private int gender;
 
 
 	public int getGender() {
@@ -18,8 +15,8 @@ public class Employee {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public void setEmpno(int empno) {
-		this.empno = empno;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public void setLname(String lname) {
 		this.lname = lname;
@@ -34,8 +31,8 @@ public class Employee {
 		this.fkana = fkana;
 	}
 
-	public int getEmpno() {
-		return this.empno;
+	public String getId() {
+		return this.id;
 	}
 	public String getLname() {
 		return this.lname;
