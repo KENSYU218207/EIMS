@@ -44,6 +44,11 @@ public class DeleteController extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 
+		if(dao.EmployerDao.deleteEmployee(id)){
+		out.println("<h2>íœ‚µ‚Ü‚µ‚½B</h2>");
+		}else{
+		out.println("<h2>íœ‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B</h2>");
+		}
 
 
 //		out.println("<h3>‚±‚±‚Ü‚Å‚Í‚Æ‚è‚ ‚¦‚¸ok!</h3>");
