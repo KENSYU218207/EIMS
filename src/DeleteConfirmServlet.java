@@ -1,5 +1,3 @@
-package controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 //削除の際に必要な制御クラス
-public class DeleteController extends HttpServlet {
+public class DeleteConfirmServlet extends HttpServlet {
 	// 削除ボタンが押下された時に呼び出される
 
 	// (削除)検索画面での入力情報を社員DAOに引き渡し、社員情報の削除を依頼
@@ -39,19 +37,33 @@ public class DeleteController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>社員情報削除完了画面</title>");
+		out.println("<title>社員情報削除確認</title>");
 		out.println("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
 		out.println("</head>");
 		out.println("<body>");
 
-		if(dao.EmployerDao.deleteEmployee(id)){
-		out.println("<h2>削除しました。</h2>");
-		}else{
-		out.println("<h2>削除できませんでした。</h2>");
-		}
+		out.println("<form action=\"DeleteController\" method=\"post\">");
+		out.println("<h2>以下の情報を削除します。本当によろしいですか？</h2>");
+		out.println(id);
+		out.println("<br>");
+		out.println(lname);
+		out.println("<br>");
+		out.println(fname);
+		out.println("<br>");
+		out.println(lkana);
+		out.println("<br>");
+		out.println(fkana);
+		out.println("<br>");
 
+		out.println("<input type=\"hidden\" name=\"empno\" value=\"" + id + "\" />");
+		out.println("<input type=\"hidden\" name=\"lname\" value=\"" + lname + "\" />");
+		out.println("<input type=\"hidden\" name=\"fname\" value=\"" + fname + "\" />");
+		out.println("<input type=\"hidden\" name=\"lkana\" value=\"" + lkana + "\" />");
+		out.println("<input type=\"hidden\" name=\"fkana\" value=\"" + fkana + "\" />");
+		out.println("<input type=\"submit\" value=\"削除する\">");
+		out.println("</form>");
+		out.print("<a href=\"SearchServlet\">戻る</a>");
 
-//		out.println("<h3>ここまではとりあえずok!</h3>");
 		out.println("</body>");
 		out.println("</html>");
 		out.close();

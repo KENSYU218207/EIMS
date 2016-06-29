@@ -172,8 +172,13 @@ public class EmployerDao {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public static boolean deleteEmployee(String empno) {
+>>>>>>> cc121c3206c49e5511456538304e8922f9c256e6
 
 
+<<<<<<< HEAD
 
 
 	public static boolean deleteEmployees(String empno) {
@@ -185,12 +190,19 @@ public class EmployerDao {
 		try {
 
 
+=======
+		try {
+
+>>>>>>> cc121c3206c49e5511456538304e8922f9c256e6
 			//ConnectionÇÃê›íË
 			Class.forName("com.mysql.jdbc.Driver");
 			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
 
 			String sql = "DELETE FROM employee WHERE empno = " + empno + " ";
+<<<<<<< HEAD
 
+=======
+>>>>>>> cc121c3206c49e5511456538304e8922f9c256e6
 
 			stmt = con.createStatement();
 			res = stmt.executeQuery(sql);
