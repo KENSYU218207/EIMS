@@ -20,25 +20,25 @@ public class AddController extends HttpServlet {
 		request.setCharacterEncoding("Windows-31J");
 
 		//í«â¡âÊñ Ç≈ì¸óÕÇ≥ÇÍÇΩèÓïÒäiî[
-		String empno = request.getParameter("addempno");
-		String lname = request.getParameter("addlname");
-		String fname = request.getParameter("addfname");
-		String lkana = request.getParameter("addlkana");
-		String fkana = request.getParameter("addfkana");
-		String password = request.getParameter("addpassword");
-		String gender = request.getParameter("addgender");
-		String deptno = request.getParameter("adddeptno");
+		String empno = request.getParameter("empno");
+		String lname = request.getParameter("lname");
+		String fname = request.getParameter("fname");
+		String lkana = request.getParameter("lkana");
+		String fkana = request.getParameter("fkana");
+		String password = request.getParameter("password");
+		String gender = request.getParameter("gender");
+		String deptno = request.getParameter("deptno");
 
 
 		HttpSession session = request.getSession();
-		session.setAttribute("addempno", empno);
-		session.setAttribute("addlname", lname);
-		session.setAttribute("addfname", fname);
-		session.setAttribute("addlkana", lkana);
-		session.setAttribute("addfkana", fkana);
-		session.setAttribute("addpassword", password);
-		session.setAttribute("addgender", gender);
-		session.setAttribute("adddeptno", deptno);
+		session.setAttribute("empno", empno);
+		session.setAttribute("lname", lname);
+		session.setAttribute("fname", fname);
+		session.setAttribute("lkana", lkana);
+		session.setAttribute("fkana", fkana);
+		session.setAttribute("password", password);
+		session.setAttribute("gender", gender);
+		session.setAttribute("deptno", deptno);
 
 
 
@@ -60,15 +60,39 @@ public class AddController extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 
+//		out.println(empno);
+//		out.println("<br>");
+//		out.println(lname);
+//		out.println("<br>");
+//		out.println(fname);
+//		out.println("<br>");
+//		out.println(lkana);
+//		out.println("<br>");
+//		out.println(fkana);
+//		out.println("<br>");
+//		out.println(password);
+//		out.println("<br>");
+//		out.println(gender);
+//		out.println("<br>");
+//		out.println(deptno);
+//		out.println("<br>");
+
 		Employee addUser = new Employee();
 		addUser.setEmpno(Integer.parseInt(empno));
+		addUser.setLname(lname);
+		addUser.setFname(fname);
+		addUser.setFkana(lkana);
+		addUser.setLkana(fkana);
+		addUser.setPassword(password);
+		addUser.setGender(Integer.parseInt(gender));
+		addUser.setDeptno(Integer.parseInt(deptno));
+
+
 		if(dao.EmployerDao.addEmployee(addUser)){
 		out.println("<h2>í«â¡ÇµÇ‹ÇµÇΩÅB</h2>");
 		}else{
 		out.println("<h2>í«â¡Ç≈Ç´Ç‹ÇπÇÒÇ≈ÇµÇΩÅB</h2>");
 		}
-		 out.println("</form>");
-
 		out.println("<br>");
 
 		out.println("<br>");

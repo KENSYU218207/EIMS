@@ -31,6 +31,14 @@ public class Employee {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
+	public void setDeptno(int deptno){
+		this.deptno=deptno;
+	}
+
+	public int getDeptno(){
+		return deptno;
+	}
+
 	public void setEmpno(int empno) {
 		this.empno = empno;
 	}

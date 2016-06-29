@@ -1,4 +1,12 @@
 /controller/
 /to/
 /dao/
+<<<<<<< HEAD
 /DeleteConfirmServlet.class
+=======
+/DeleteServlet.class
+<<<<<<< HEAD
+=======
+/EditConfirmServlet.class
+>>>>>>> bf8835d376836c275f23c5860a250daeb773d0c2
+>>>>>>> 532af5b93c7a4306461109fdf5ffa337b759ae63

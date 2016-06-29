@@ -33,6 +33,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>EditConfirmServlet</display-name>
+		<servlet-name>EditConfirmServlet</servlet-name>
+		<servlet-class>EditConfirmServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>AddController</display-name>
 		<servlet-name>AddController</servlet-name>
 		<servlet-class>controller.AddController</servlet-class>
@@ -80,6 +87,10 @@
 	<servlet-mapping>
 		<servlet-name>AddConfirmServlet</servlet-name>
 		<url-pattern>/AddConfirmServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditConfirmServlet</servlet-name>
+		<url-pattern>/EditConfirmServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AddController</servlet-name>
