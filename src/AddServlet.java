@@ -24,14 +24,15 @@ public class AddServlet extends HttpServlet {
 
 		//ƒƒOƒCƒ“‰æ–Ê‚Å“ü—Í‚³‚ê‚½Ğˆõ”Ô†Ši”[
 		String userid = request.getParameter("userid");
-
+		String keyword = request.getParameter("searchkey");
 		HttpSession session = request.getSession();
 		session.setAttribute("userid", userid);
+
 /*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
-		list = dao.EmployerDao.selectEmployees();
+		list = dao.EmployerDao.selectEmployees(keyword);
 
 		response.setContentType("text/html; charset=Windows-31J");
 
