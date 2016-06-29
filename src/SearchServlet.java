@@ -102,6 +102,10 @@ public class SearchServlet extends HttpServlet {
 		}
 		out.println("<br>");
 
+		out.println("<form action=\"index.html\" method=\"post\">");
+		out.println("<input type=\"submit\" value=\"ログアウト\">");
+		out.println("</form>");
+
 		int count = 0;
 		if (list != null) {
 			count = list.size();
@@ -140,7 +144,7 @@ public class SearchServlet extends HttpServlet {
 				fkana = data.getFkana();
 				lname = data.getLname();
 				lkana = data.getLkana();
-				dept = data.getEmpno();
+				dept = data.getDeptno();
 				gender = data.getGender();
 				pass = data.getPassword();
 				System.out.println(pass);
