@@ -1,11 +1,16 @@
 package controller;
 
+<<<<<<< HEAD
 
 import to.Employee;
 
 
 //ログオンの際に必要な制御クラス
 
+=======
+import to.Employee;
+
+>>>>>>> 45a98ddb400d869a63873869f89dc3a0b84b98d7
 public class LogonController {
 
 	// メソッド：ログオンを依頼する
