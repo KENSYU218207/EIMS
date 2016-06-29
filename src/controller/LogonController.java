@@ -31,11 +31,14 @@ public class LogonController extends HttpServlet {
 
 		// ログイン成功
 		if (bool == true) {
-
+			session.setAttribute("login", "OK");
+			String target = (String)session.getAttribute("target");
+			response.sendRedirect(target);
 		}
 		//ログイン失敗
 		else {
-
+			session.setAttribute("status", "NO");
+			response.sendRedirect("C:/workspac/EIMS/src/LogonServlet");
 		}
 
 	}
