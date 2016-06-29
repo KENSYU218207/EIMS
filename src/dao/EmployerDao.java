@@ -169,85 +169,33 @@ public class EmployerDao {
 		}
 	}
 
-public static ArrayList<Employee> deleteSelectEmployees(String emptno) {
+	public static boolean deleteEmployees(String empno) {
 
 		ArrayList<Employee> array = null;
 		Statement stmt = null;
 		ResultSet res = null;
 
 		try {
-			String sql = "SELECT * "
-						+ "FROM employee LEFT OUTER JOIN department "
-						+ "ON employee.deptno = department.deptno "
-						+ "WHERE employee.deptno = " + "'" + emptno + "'" + " ";
+			//Connectionの設定
+			Class.forName("com.mysql.jdbc.Driver");
+			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
+
+			String sql = "DELETE FROM employee WHERE empno = " + empno + " ";
 
 			stmt = con.createStatement();
 			res = stmt.executeQuery(sql);
 
-			while (res.next()) {
-				if (array == null) {
-					array = new ArrayList<Employee>();
-				}
-
-				Employee data = new Employee();
-				//DBの中身を取得して社員インスタンスにセットする
-				data.setEmpno(res.getInt("empno"));
-				data.setFname(res.getString("fname"));
-				data.setFkana(res.getString("fkana"));
-				data.setLname(res.getString("lname"));
-				data.setLkana(res.getString("lkana"));
-
-				array.add(data);
-			}
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		}
-		return array;
-	}
-
-	public static ArrayList<Employee> deleteEmployees(String emptno) {
-
-		ArrayList<Employee> array = null;
-		Statement stmt = null;
-		ResultSet res = null;
-
-		try {
-			String sql = "SELECT * "
-						+ "FROM employee LEFT OUTER JOIN department "
-						+ "ON employee.deptno = department.deptno "
-						+ "WHERE lname = " + "'" + emptno + "'" + " "
-						+ "OR fname = " + "'" + emptno + "'" + " "
-						+ "OR lkana = " + "'" + emptno + "'" + " "
-						+ "OR fkana = " + "'" + emptno + "'" + " "
-						+ "OR department.deptname = " + "'" + emptno + "'" + " "
-						+ "OR employee.deptno = " + "'" + emptno + "'" + " ";
-
-			stmt = con.createStatement();
-			res = stmt.executeQuery(sql);
-
-			while (res.next()) {
-				if (array == null) {
-					array = new ArrayList<Employee>();
-				}
-
-				Employee data = new Employee();
-				//DBの中身を取得して社員インスタンスにセットする
-				data.setEmpno(res.getInt("empno"));
-				data.setFname(res.getString("fname"));
-				data.setFkana(res.getString("fkana"));
-				data.setLname(res.getString("lname"));
-				data.setLkana(res.getString("lkana"));
-
-				array.add(data);
-			}
-		} catch (SQLException e) {
+			return false;
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (NullPointerException e) {
-			e.printStackTrace();
+			return false;
 		}
-		return array;
 	}
 
 	public static boolean addEmployee(Employee employee){
