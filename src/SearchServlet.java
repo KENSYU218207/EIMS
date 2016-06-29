@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import controller.LogonController;
 import to.Employee;
 
 
@@ -78,7 +77,7 @@ public class SearchServlet extends HttpServlet {
 		out.println("<br>");
 		// 各種チェック
 		// password と人事部チェック
-		LogonController.sendLogon(userid, password);
+		//LogonController.sendLogon(userid, password);
 		/*
 		 * out.println("パスワードチェック："+
 		 * LogonController.sendLogon(userid,password)); out.println("<br>");
@@ -111,12 +110,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("検索結果：" + count + "件");
 		out.println("<table width=\"98%\" border=\"0\">");
 		out.println("<tr>");
-		out.println("<th width=\"20%\">社員番号</th>");
-		out.println("<th width=\"20%\">氏</th>");
-		out.println("<th width=\"20%\">氏（フリガナ）</th>");
-		out.println("<th width=\"20%\">名</th>");
-		out.println("<th width=\"20%\">名（フリガナ）</th>");
-		out.println("<th width=\"20%\">部署名</th>");
+		out.println("<th width=\"10%\">社員番号</th>");
+		out.println("<th width=\"10%\">氏</th>");
+		out.println("<th width=\"10%\">氏（フリガナ）</th>");
+		out.println("<th width=\"10%\">名</th>");
+		out.println("<th width=\"10%\">名（フリガナ）</th>");
+		out.println("<th width=\"10%\">部署名</th>");
 
 		// out.println("<th width=\"30%\">部署名</th>");
 		// out.println("<th rowspan=\"2\">商品購入</th>");
@@ -129,7 +128,10 @@ public class SearchServlet extends HttpServlet {
 			String fkana = "";
 			String lname = "";
 			String lkana = "";
-			String dept = "";
+			String pass = "";
+			int dept = 0;
+			int gender = 99;
+
 			Employee data = (Employee) list.get(i);
 
 			if (data != null) {
@@ -138,23 +140,27 @@ public class SearchServlet extends HttpServlet {
 				fkana = data.getFkana();
 				lname = data.getLname();
 				lkana = data.getLkana();
-//				dept = data.get
-
+				dept = data.getEmpno();
+				gender = data.getGender();
+				pass = data.getPassword();
 			}
 			out.println("<tr class=\"emp\">");
-			out.println("<td width=\"20%\">" + id + "</td>");
-			out.println("<td width=\"20%\">" + lname + "</td>");
-			out.println("<td width=\"20%\">" + lkana + "</td>");
-			out.println("<td width=\"20%\">" + fname + "</td>");
-			out.println("<td width=\"20%\">" + fkana + "</td>");
-
+			out.println("<td width=\"10%\">" + id + "</td>");
+			out.println("<td width=\"10%\">" + lname + "</td>");
+			out.println("<td width=\"10%\">" + lkana + "</td>");
+			out.println("<td width=\"10%\">" + fname + "</td>");
+			out.println("<td width=\"10%\">" + fkana + "</td>");
+			out.println("<td width=\"10%\">" + dept + "</td>");
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
-			out.println("<form action=\"CartServlet\" method=\"post\">");
+			out.println("<form action=\"DeleteController\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
 			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
 			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_passr\" value=\"" + pass + "\">");
 			out.println("<input type=\"submit\" name=\"submit\" value=\"削除\">");
 			out.println("</form>");
 			out.println("</td>");
@@ -165,6 +171,9 @@ public class SearchServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
 			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_pass\" value=\"" + pass + "\">");
 			out.println("<input type=\"submit\" name=\"submit\" value=\"変更\">");
 			out.println("</form>");
 			out.println("</td>");
