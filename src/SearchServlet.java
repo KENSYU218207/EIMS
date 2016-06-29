@@ -41,7 +41,7 @@ public class SearchServlet extends HttpServlet {
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
 */
-		list = dao.EmployerDao.selectEmployees(keyword);
+//		list = dao.EmployerDao.selectEmployees(keyword);
 
 		response.setContentType("text/html; charset=Windows-31J");
 

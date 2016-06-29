@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -8,22 +6,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import to.Employee;
 
-/**
- * Servlet implementation class Add
- */
-public class AddServlet extends HttpServlet {
+public class AddConfirmServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Employee> list = null;
 
 		request.setCharacterEncoding("Windows-31J");
 
-		//ƒƒOƒCƒ“‰æ–Ê‚Å“ü—Í‚³‚ê‚½Ğˆõ”Ô†Ši”[
-//		String userid = request.getParameter("userid");
+		//’Ç‰Á‰æ–Ê‚Å“ü—Í‚³‚ê‚½î•ñŠi”[
+		String lname = request.getParameter("addlname");
+		String fname = request.getParameter("addfname");
+		String lkana = request.getParameter("addlkana");
+		String fkana = request.getParameter("addfkana");
+		String password = request.getParameter("addpassword");
+		String gender = request.getParameter("addgender");
+		String deptno = request.getParameter("adddeptno");
+
+
+
 
 //		HttpSession session = request.getSession();
 //		session.setAttribute("userid", userid);
