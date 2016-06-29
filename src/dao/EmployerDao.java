@@ -170,10 +170,16 @@ public class EmployerDao {
 	}
 
 	public static boolean addEmployee(Employee employee){
-		String empno,lname,fname,lkana,fkana,password,gender,deptno;
-
+		int empno=employee.getEmpno();
+		String lname=employee.getLname();
+		String fname=employee.getFname();
+		String lkana=employee.getLkana();
+		String fkana=employee.getFkana();
+		String password=employee.getPassword();
+		int gender=employee.getGender();
+		int deptno=employee.getDeptno();
 		Statement stmt = null;
-		ResultSet res = null;
+//		ResultSet res = null;
 		try {
 			//Connectionの設定
 			Class.forName("com.mysql.jdbc.Driver");
@@ -181,32 +187,33 @@ public class EmployerDao {
 //			ConnectionManager cm = ConnectionManager.getConnectionManager();
 //			con = cm.getConnection();
 
-			//SQL文の設定（持ってきた社員番号に一致する人を取得）
+			//SQL文の設定（持ってきた社員情報を追加する）
 			String sql = "INSERT "
 					+"employee "
 					+"VALUES "
 					+"("
-					+1000//empno
+					+empno
 					+","
-					+"'"+"田中"+"'"//lname
+					+"'"+lname+"'"//lname
 					+","
-					+"'"+"太郎"+"'"//fname
+					+"'"+fname+"'"//fname
 					+","
-					+"'"+"タナカ"+"'"//lkana
+					+"'"+lkana+"'"//lkana
 					+","
-					+"'"+"タロウ"+"'"//fkana
+					+"'"+fkana+"'"//fkana
 					+","
-					+"'"+"tanatana"+"'"//password
+					+"'"+password+"'"//password
 					+","
-					+1//gender
+					+gender//gender
 					+","
-					+200//deptno
+					+deptno//deptno
 					+")"
 					+" ";
-
+System.out.println(sql);
 			//SQL文投げる
 			stmt = con.createStatement();
-			res = stmt.executeQuery(sql);
+			int res = stmt.executeUpdate(sql);
+			System.out.println(res);
 
 			return true;
 		} catch (SQLException e) {
@@ -223,5 +230,4 @@ public class EmployerDao {
 		}
 
 	}
-
 }
