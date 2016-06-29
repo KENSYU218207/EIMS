@@ -11,7 +11,20 @@ public class Employee {
 	private int deptno=0;//Š‘®ƒR[ƒh
 
 
+	public Employee(){
 
+	}
+	public Employee(String id, String password) {
+		super();
+		this.id = id;
+		this.password = password;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getGender() {
 		return gender;
 	}

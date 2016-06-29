@@ -11,31 +11,30 @@ import javax.servlet.http.HttpSession;
 import controller.LogonController;
 import to.Employee;
 
+
+
 public class SearchServlet extends HttpServlet {
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		ArrayList<Employee> list = null;
-
 		request.setCharacterEncoding("Windows-31J");
-
-		// String type = request.getParameter("category");//
 		String keyword = request.getParameter("searchkey");
 		// String keyword = "長嶋";
 		// ログイン画面で入力された社員番号格納
 		String userid = request.getParameter("userid");
 		// ログイン画面で入力されたパスワード格納
 		String password = request.getParameter("password");
-		System.out.println(keyword);
-
 		HttpSession session = request.getSession();
 		// リクエストパラメータに検索条件が入っていなかった場合
 		if (keyword == null) {
 			// 前回検索条件をセッションから取り出し
 			keyword = (String) session.getAttribute("searchkey");
 		}
+
+
 		// 検索条件をセッションに保存
-		// session.setAttribute("category", type);
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
@@ -49,8 +48,14 @@ public class SearchServlet extends HttpServlet {
 		list = bl.selectProducts(type, keyword);
 */
 //		list = dao.EmployerDao.selectEmployees(keyword);
+		if (list != null) {
+			request.setAttribute("searchlist", list);
+		}
 
-
+		// に検索結果を転送する
+	/*	request.getRequestDispatcher("http://localhost:8080/EIMS/SearchServlet").
+			forward(request, response);
+*/
 		response.setContentType("text/html; charset=Windows-31J");
 
 		PrintWriter out = response.getWriter();
@@ -91,6 +96,12 @@ public class SearchServlet extends HttpServlet {
 			out.println("</form>");
 		}
 		out.println("<br>");
+		if (dao.EmployerDao.checkJinji(userid)) {
+			out.println("<form action=\"EditServlet\" method=\"post\">");
+			out.println("<input type=\"submit\" value=\"変更\">");
+			out.println("</form>");
+		}
+		out.println("<br>");
 
 		int count = 0;
 		if (list != null) {
@@ -105,6 +116,7 @@ public class SearchServlet extends HttpServlet {
 		out.println("<th width=\"20%\">氏（フリガナ）</th>");
 		out.println("<th width=\"20%\">名</th>");
 		out.println("<th width=\"20%\">名（フリガナ）</th>");
+		out.println("<th width=\"20%\">部署名</th>");
 
 		// out.println("<th width=\"30%\">部署名</th>");
 		// out.println("<th rowspan=\"2\">商品購入</th>");
@@ -117,7 +129,7 @@ public class SearchServlet extends HttpServlet {
 			String fkana = "";
 			String lname = "";
 			String lkana = "";
-			int description = 0;
+			String dept = "";
 			Employee data = (Employee) list.get(i);
 
 			if (data != null) {
@@ -126,9 +138,10 @@ public class SearchServlet extends HttpServlet {
 				fkana = data.getFkana();
 				lname = data.getLname();
 				lkana = data.getLkana();
+				dept = data.get
 
 			}
-			out.println("<tr class=\"product\">");
+			out.println("<tr class=\"emp\">");
 			out.println("<td width=\"20%\">" + id + "</td>");
 			out.println("<td width=\"20%\">" + lname + "</td>");
 			out.println("<td width=\"20%\">" + lkana + "</td>");
@@ -137,8 +150,22 @@ public class SearchServlet extends HttpServlet {
 
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
 			out.println("<form action=\"CartServlet\" method=\"post\">");
-			out.println("<input type=\"hidden\" name=\"product_id\" value=\"" + id + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
 			out.println("<input type=\"submit\" name=\"submit\" value=\"削除\">");
+			out.println("</form>");
+			out.println("</td>");
+			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
+			out.println("<form action=\"EditServlet\" method=\"post\">");
+			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
+			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
+			out.println("<input type=\"submit\" name=\"submit\" value=\"変更\">");
 			out.println("</form>");
 			out.println("</td>");
 			out.println("</tr>");
