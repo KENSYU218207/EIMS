@@ -143,6 +143,7 @@ public class SearchServlet extends HttpServlet {
 				dept = data.getEmpno();
 				gender = data.getGender();
 				pass = data.getPassword();
+				System.out.println(pass);
 			}
 			out.println("<tr class=\"emp\">");
 			out.println("<td width=\"10%\">" + id + "</td>");

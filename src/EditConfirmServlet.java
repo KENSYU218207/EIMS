@@ -56,7 +56,7 @@ public class EditConfirmServlet extends HttpServlet {
 		out.println("<body>");
 		out.println("<h1>変更確認ページ</h1>");
 		//社員番号の表示
-//		out.println(userid);
+		out.println(id);
 		out.println("<br>");
 		out.println("<br>");
 		out.println("<br>");
@@ -77,6 +77,8 @@ public class EditConfirmServlet extends HttpServlet {
 		out.println(gender);
 		out.println("<br>");
 		out.println(dept);
+		out.println("<br>");
+		out.println(password);
 		out.println("<br>");
 
 		out.println("<input type=\"hidden\" name=\"empno\" value=\""+id+"\" />");
