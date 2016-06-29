@@ -66,7 +66,7 @@ public class LogonServlet extends HttpServlet {
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println("社員番号：<input type=\"text\" name=\"userid\" size=\"20\"><br>");
 		out.println("パスワード：<input type=\"password\" name=\"password\" size=\"20\"><br>");
-		out.println("<input type=\"submit\" value=\"ログイン\" onClick=\"disp()\"> ");
+		out.println("<input type=\"submit\" value=\"ログイン\" onClick=\"LogonController\"> ");
 		out.println("</form>");
 		out.println(" </body>");
 		out.println("</html>");
