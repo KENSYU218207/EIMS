@@ -168,8 +168,7 @@ public class EmployerDao {
 			return false;
 		}
 	}
-
-	public static boolean deleteEmployees(String empno) {
+	public static boolean deleteEmployee(String empno) {
 
 		ArrayList<Employee> array = null;
 		Statement stmt = null;
