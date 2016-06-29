@@ -152,7 +152,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<td width=\"10%\">" + fkana + "</td>");
 			out.println("<td width=\"10%\">" + dept + "</td>");
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
-			out.println("<form action=\"DeleteController\" method=\"post\">");
+			out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
 			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
