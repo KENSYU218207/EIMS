@@ -29,6 +29,7 @@ public class EditServlet extends HttpServlet {
 		String dept = request.getParameter("emp_dept");
 		String gender = request.getParameter("emp_gender");
 		String password = request.getParameter("emp_pass");
+		System.out.println(password);
 
 		//ログイン画面で入力された社員番号格納
 
@@ -72,6 +73,7 @@ public class EditServlet extends HttpServlet {
 		 out.println("パスワード：<input type=\"password\" name=\"editpassword\" size=\"20\" value=\"" + password + "\"><br>");
 		 out.println("性別：<input type=\"radio\" name=\"editgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
 		 out.println("所属先：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">人事部</option><option value=\"200\">経理部</option><option value=\"300\">営業部</option><option value=\"400\">企画部</option><option value=\"500\">開発部</option><option value=\"600\">総務部</option></select><br>");
+		 out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
 		 out.println("<input type=\"submit\" value=\"変更する\">");
 		 out.println("</form>");
 

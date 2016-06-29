@@ -45,6 +45,13 @@
 		<servlet-class>controller.AddController</servlet-class>
 	</servlet>
 	<servlet>
+		<description>
+		</description>
+		<display-name>EditController</display-name>
+		<servlet-name>EditController</servlet-name>
+		<servlet-class>controller.EditController</servlet-class>
+	</servlet>
+	<servlet>
 		<display-name>LogonServlet</display-name>
 		<servlet-name>LogonServlet</servlet-name>
 		<servlet-class>LogonServlet</servlet-class>
@@ -107,6 +114,10 @@
 	<servlet-mapping>
 		<servlet-name>DeleteController</servlet-name>
 		<url-pattern>/DeleteController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditController</servlet-name>
+		<url-pattern>/EditController</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

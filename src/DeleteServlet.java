@@ -30,7 +30,9 @@ public class DeleteServlet extends HttpServlet {
 		// ŒŸõğŒ‚ğƒZƒbƒVƒ‡ƒ“‚É•Û‘¶
 		session.setAttribute("emptno", emptno);
 
+
 //		list = dao.EmployerDao.deleteSelectEmployees(emptno);
+
 
 		if (list != null) {
 			request.setAttribute("searchlist", list);

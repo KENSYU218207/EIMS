@@ -146,6 +146,9 @@ public class EmployerDao {
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
 				data.setLkana(res.getString("lkana"));
+				data.setPassword(res.getString("password"));
+				data.setDeptno(res.getInt("deptno"));
+				data.setGender(res.getInt("gender"));
 
 				array.add(data);
 			}
@@ -168,13 +171,16 @@ public class EmployerDao {
 			return false;
 		}
 	}
-	public static boolean deleteEmployee(String empno) {
+
+	public static boolean deleteEmployees(String empno) {
 
 		ArrayList<Employee> array = null;
 		Statement stmt = null;
 		ResultSet res = null;
 
+
 		try {
+
 			//ConnectionÇÃê›íË
 			Class.forName("com.mysql.jdbc.Driver");
 			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
@@ -306,7 +312,7 @@ public class EmployerDao {
 					+"empno="
 					+empno
 					+" ";
-			//System.out.println(sql);
+			System.out.println(sql);
 			//SQLï∂ìäÇ∞ÇÈ
 			stmt = con.createStatement();
 			int res = stmt.executeUpdate(sql);
