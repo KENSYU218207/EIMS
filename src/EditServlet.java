@@ -64,7 +64,7 @@ public class EditServlet extends HttpServlet {
 		out.println("<br>");
 //		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
-		out.println("<form action=\"SearchServlet\" method=\"post\">");
+		out.println("<form action=\"EditConfirmServlet\" method=\"post\">");
 		 out.println("氏：<input type=\"text\" name=\"editlname\" size=\"20\" value=\"" + lname + "\"><br>");
 		 out.println("名：<input type=\"text\" name=\"editfname\" size=\"20\" value=\"" + fname + "\"><br>");
 		 out.println("氏(カナ)：<input type=\"text\" name=\"editlkana\" size=\"20\" value=\"" + lkana + "\"><br>");
