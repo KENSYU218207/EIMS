@@ -131,6 +131,9 @@ public class EmployerDao {
 				data.setFkana(res.getString("fkana"));
 				data.setLname(res.getString("lname"));
 				data.setLkana(res.getString("lkana"));
+				data.setPassword(res.getString("password"));
+				data.setDeptno(res.getInt("deptno"));
+				data.setGender(res.getInt("gender"));
 
 				array.add(data);
 			}
@@ -157,6 +160,7 @@ public class EmployerDao {
 
 		ArrayList<Employee> array = null;
 		Statement stmt = null;
+
 
 		try {
 
@@ -244,21 +248,43 @@ public class EmployerDao {
 		try {
 			// Connectionの設定
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
-			// ConnectionManager cm = ConnectionManager.getConnectionManager();
-			// con = cm.getConnection();
 
-			// SQL文の設定（持ってきた社員情報を追加する）
-			String sql = "UPDATE " + "employee " + "SET " + "lname=" + "'" + lname + "'"// lname
-					+ "," + "fname=" + "'" + fname + "'"// fname
-					+ "," + "lkana=" + "'" + lkana + "'"// lkana
-					+ "," + "fkana=" + "'" + fkana + "'"// fkana
-					+ "," + "password=" + "'" + password + "'"// password
-					+ "," + "gender=" + gender// gender
-					+ "," + "deptno=" + deptno// deptno
-					+ " " + "WHERE " + "empno=" + empno + " ";
-			// System.out.println(sql);
-			// SQL文投げる
+			con=DriverManager.getConnection("jdbc:mysql://localhost/eimsdb", "eimsuser", "eimspass");
+			//			ConnectionManager cm = ConnectionManager.getConnectionManager();
+			//			con = cm.getConnection();
+
+			//SQL文の設定（持ってきた社員情報を追加する）
+			String sql = "UPDATE "
+					+"employee "
+					+"SET "
+					+"lname="
+					+"'"+lname+"'"//lname
+					+","
+					+"fname="
+					+"'"+fname+"'"//fname
+					+","
+					+"lkana="
+					+"'"+lkana+"'"//lkana
+					+","
+					+"fkana="
+					+"'"+fkana+"'"//fkana
+					+","
+					+"password="
+					+"'"+password+"'"//password
+					+","
+					+"gender="
+					+gender//gender
+					+","
+					+"deptno="
+					+deptno//deptno
+					+" "
+					+"WHERE "
+					+"empno="
+					+empno
+					+" ";
+			System.out.println(sql);
+			//SQL文投げる
+
 			stmt = con.createStatement();
 			int res = stmt.executeUpdate(sql);
 			System.out.println(res);

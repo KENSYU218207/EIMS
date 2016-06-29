@@ -81,7 +81,6 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<br>");
 		out.println(deptno);
 		out.println("<br>");
-
 		out.println("<input type=\"hidden\" name=\"empno\" value=\""+empno+"\" />");
 		out.println("<input type=\"hidden\" name=\"lname\" value=\""+lname+"\" />");
 		out.println("<input type=\"hidden\" name=\"fname\" value=\""+fname+"\" />");
@@ -92,6 +91,18 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"deptno\" value=\""+deptno+"\" />");
 		 out.println("<input type=\"submit\" value=\"’Ç‰Á‚·‚é\">");
 		 out.println("</form>");
+			out.println("<form action=\"AddServlet\" method=\"post\">");
+			out.println("<input type=\"hidden\" name=\"addempno\" value=\""+empno+"\" />");
+			out.println("<input type=\"hidden\" name=\"addlname\" value=\""+lname+"\" />");
+			out.println("<input type=\"hidden\" name=\"addfname\" value=\""+fname+"\" />");
+			out.println("<input type=\"hidden\" name=\"addlkana\" value=\""+lkana+"\" />");
+			out.println("<input type=\"hidden\" name=\"addfkana\" value=\""+fkana+"\" />");
+			out.println("<input type=\"hidden\" name=\"addpassword\" value=\""+password+"\" />");
+			out.println("<input type=\"hidden\" name=\"addgender\" value=\""+gender+"\" />");
+			out.println("<input type=\"hidden\" name=\"adddeptno\" value=\""+deptno+"\" />");
+			 out.println("<input type=\"submit\" value=\"ƒLƒƒƒ“ƒZƒ‹\">");
+			 out.println("</form>");
+
 
 		out.println("<br>");
 

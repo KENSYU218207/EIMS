@@ -81,8 +81,8 @@ public class AddController extends HttpServlet {
 		addUser.setEmpno(Integer.parseInt(empno));
 		addUser.setLname(lname);
 		addUser.setFname(fname);
-		addUser.setFkana(lkana);
-		addUser.setLkana(fkana);
+		addUser.setLkana(lkana);
+		addUser.setFkana(fkana);
 		addUser.setPassword(password);
 		addUser.setGender(Integer.parseInt(gender));
 		addUser.setDeptno(Integer.parseInt(deptno));
@@ -90,8 +90,14 @@ public class AddController extends HttpServlet {
 
 		if(dao.EmployerDao.addEmployee(addUser)){
 		out.println("<h2>追加しました。</h2>");
+		out.println("<form action=\"SearchServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"検索画面に戻る\">");
+		 out.println("</form>");
 		}else{
-		out.println("<h2>追加できませんでした。</h2>");
+		out.println("<h2>DBへの接続に失敗しました。</h2>");
+		out.println("<form action=\"AddConfirmServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"確認画面に戻る\">");
+		 out.println("</form>");
 		}
 		out.println("<br>");
 
