@@ -105,7 +105,7 @@ public class EmployerDao {
 		ResultSet res = null;
 
 		try {
-			boolean bool = false;//checkType(keyword);
+			boolean bool = checkType(keyword);
 
 
 			String sql = null;

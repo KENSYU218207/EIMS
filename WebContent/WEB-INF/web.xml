@@ -20,8 +20,6 @@
 		<servlet-class>ClearServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<description>
-		</description>
 		<display-name>AddServlet</display-name>
 		<servlet-name>AddServlet</servlet-name>
 		<servlet-class>AddServlet</servlet-class>
