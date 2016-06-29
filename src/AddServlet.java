@@ -26,7 +26,7 @@ public class AddServlet extends HttpServlet {
 
 //		String userid = request.getParameter("userid");
 
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 //		session.setAttribute("userid", userid);
 
 /*
@@ -52,18 +52,20 @@ public class AddServlet extends HttpServlet {
 		//社員番号の表示
 //		out.println(userid);
 		out.println("<br>");
+
 		out.println("<br>");
 		out.println("<br>");
 //		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
-		out.println("<form action=\"SearchServlet\" method=\"post\">");
-		 out.println("社員番号：<input type=\"text\" name=\"addlname\" size=\"20\"><br>");
-		 out.println("社員番号：<input type=\"text\" name=\"addfname\" size=\"20\"><br>");
-		 out.println("社員番号：<input type=\"text\" name=\"addlkana\" size=\"20\"><br>");
-		 out.println("社員番号：<input type=\"text\" name=\"addfkana\" size=\"20\"><br>");
+		out.println("<form action=\"AddConfirmServlet\" method=\"post\">");
+		 out.println("社員番号：<input type=\"text\" name=\"addempno\" size=\"20\"><br>");
+		 out.println("氏：<input type=\"text\" name=\"addlname\" size=\"20\"><br>");
+		 out.println("名：<input type=\"text\" name=\"addfname\" size=\"20\"><br>");
+		 out.println("氏（カナ）：<input type=\"text\" name=\"addlkana\" size=\"20\"><br>");
+		 out.println("名（カナ）：<input type=\"text\" name=\"addfkana\" size=\"20\"><br>");
 		 out.println("パスワード：<input type=\"password\" name=\"addpassword\" size=\"20\"><br>");
 		 out.println("性別：<input type=\"radio\" name=\"addgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
-		 out.println("所属先：<select name=\"adddept\"><option value=\"none\">-</option><option value=\"100\">人事部</option><option value=\"200\">経理部</option><option value=\"300\">営業部</option><option value=\"400\">企画部</option><option value=\"500\">開発部</option><option value=\"600\">総務部</option></select><br>");
+		 out.println("所属コード：<select name=\"adddeptno\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
 		 out.println("<input type=\"submit\" value=\"追加する\">");
 		 out.println("</form>");
 

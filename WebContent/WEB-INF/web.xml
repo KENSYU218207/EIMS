@@ -26,6 +26,13 @@
 		<servlet-name>AddServlet</servlet-name>
 		<servlet-class>AddServlet</servlet-class>
 	</servlet>
+		<servlet>
+		<description>
+		</description>
+		<display-name>AddConfirmServlet</display-name>
+		<servlet-name>AddConfirmServlet</servlet-name>
+		<servlet-class>AddConfirmServlet</servlet-class>
+	</servlet>
 	<servlet>
 		<display-name>LogonServlet</display-name>
 		<servlet-name>LogonServlet</servlet-name>
@@ -46,6 +53,10 @@
 	<servlet-mapping>
 		<servlet-name>AddServlet</servlet-name>
 		<url-pattern>/AddServlet</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>AddConfirmServlet</servlet-name>
+		<url-pattern>/AddConfirmServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LogonServlet</servlet-name>

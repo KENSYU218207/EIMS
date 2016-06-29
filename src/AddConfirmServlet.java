@@ -6,17 +6,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import to.Employee;
 
 public class AddConfirmServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Employee> list = null;
+//		ArrayList<Employee> list = null;
 
 		request.setCharacterEncoding("Windows-31J");
 
 		//追加画面で入力された情報格納
+		String empno = request.getParameter("addempno");
 		String lname = request.getParameter("addlname");
 		String fname = request.getParameter("addfname");
 		String lkana = request.getParameter("addlkana");
@@ -26,10 +28,18 @@ public class AddConfirmServlet extends HttpServlet {
 		String deptno = request.getParameter("adddeptno");
 
 
+		HttpSession session = request.getSession();
+		session.setAttribute("addempno", empno);
+		session.setAttribute("addlname", lname);
+		session.setAttribute("addfname", fname);
+		session.setAttribute("addlkana", lkana);
+		session.setAttribute("addfkana", fkana);
+		session.setAttribute("addpassword", password);
+		session.setAttribute("addgender", gender);
+		session.setAttribute("adddeptno", deptno);
 
 
-//		HttpSession session = request.getSession();
-//		session.setAttribute("userid", userid);
+
 /*
 		BusinessLogic bl = new BusinessLogic();
 		list = bl.selectProducts(type, keyword);
@@ -41,13 +51,13 @@ public class AddConfirmServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>社員情報追加</title>");
+		out.println("<title>社員情報追加確認</title>");
 
 		out.println
 		("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>追加ページ</h1>");
+		out.println("<h1>追加確認ページ</h1>");
 		//社員番号の表示
 //		out.println(userid);
 		out.println("<br>");
@@ -55,14 +65,31 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<br>");
 //		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
-		out.println("<form action=\"SearchServlet\" method=\"post\">");
-		 out.println("社員番号：<input type=\"text\" name=\"addlname\" size=\"20\"><br>");
-		 out.println("社員番号：<input type=\"text\" name=\"addfname\" size=\"20\"><br>");
-		 out.println("社員番号：<input type=\"text\" name=\"addlkana\" size=\"20\"><br>");
-		 out.println("社員番号：<input type=\"text\" name=\"addfkana\" size=\"20\"><br>");
-		 out.println("パスワード：<input type=\"password\" name=\"addpassword\" size=\"20\"><br>");
-		 out.println("性別：<input type=\"radio\" name=\"addgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
-		 out.println("所属先：<select name=\"adddept\"><option value=\"none\">-</option><option value=\"100\">人事部</option><option value=\"200\">経理部</option><option value=\"300\">営業部</option><option value=\"400\">企画部</option><option value=\"500\">開発部</option><option value=\"600\">総務部</option></select><br>");
+//		out.println("<form action=\"SearchServlet\" method=\"post\">");
+		out.println("<h2>以下の情報で登録します。よろしいですか？</h2>");
+		out.println(empno);
+		out.println("<br>");
+		out.println(lname);
+		out.println("<br>");
+		out.println(fname);
+		out.println("<br>");
+		out.println(lkana);
+		out.println("<br>");
+		out.println(fkana);
+		out.println("<br>");
+		out.println(gender);
+		out.println("<br>");
+		out.println(deptno);
+		out.println("<br>");
+
+		out.println("<input type=\"hidden\" name=\"empno\" value=\""+empno+"\" />");
+		out.println("<input type=\"hidden\" name=\"lname\" value=\""+lname+"\" />");
+		out.println("<input type=\"hidden\" name=\"fname\" value=\""+fname+"\" />");
+		out.println("<input type=\"hidden\" name=\"lkana\" value=\""+lkana+"\" />");
+		out.println("<input type=\"hidden\" name=\"fkana\" value=\""+fkana+"\" />");
+		out.println("<input type=\"hidden\" name=\"password\" value=\""+password+"\" />");
+		out.println("<input type=\"hidden\" name=\"gender\" value=\""+gender+"\" />");
+		out.println("<input type=\"hidden\" name=\"deptno\" value=\""+deptno+"\" />");
 		 out.println("<input type=\"submit\" value=\"追加する\">");
 		 out.println("</form>");
 
