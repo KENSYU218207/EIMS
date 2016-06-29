@@ -24,12 +24,19 @@
 		<servlet-name>AddServlet</servlet-name>
 		<servlet-class>AddServlet</servlet-class>
 	</servlet>
-		<servlet>
+	<servlet>
 		<description>
 		</description>
 		<display-name>AddConfirmServlet</display-name>
 		<servlet-name>AddConfirmServlet</servlet-name>
 		<servlet-class>AddConfirmServlet</servlet-class>
+	</servlet>
+		<servlet>
+		<description>
+		</description>
+		<display-name>AddController</display-name>
+		<servlet-name>AddController</servlet-name>
+		<servlet-class>controller.AddController</servlet-class>
 	</servlet>
 	<servlet>
 		<display-name>LogonServlet</display-name>
@@ -55,6 +62,10 @@
 		<servlet-mapping>
 		<servlet-name>AddConfirmServlet</servlet-name>
 		<url-pattern>/AddConfirmServlet</url-pattern>
+	</servlet-mapping>
+			<servlet-mapping>
+		<servlet-name>AddController</servlet-name>
+		<url-pattern>/AddController</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LogonServlet</servlet-name>

@@ -112,7 +112,7 @@ public class SearchServlet extends HttpServlet {
 		out.println("<tr>");
 		out.println("</tr>");
 		for (int i = 0; i < count; i++) {
-			String id = "";
+			int id = 0;
 			String fname = "";
 			String fkana = "";
 			String lname = "";
@@ -121,7 +121,7 @@ public class SearchServlet extends HttpServlet {
 			Employee data = (Employee) list.get(i);
 
 			if (data != null) {
-				id = data.getId();
+				id = data.getEmpno();
 				fname = data.getFname();
 				fkana = data.getFkana();
 				lname = data.getLname();
