@@ -2,6 +2,12 @@ package controller;
 
 import to.Employee;
 
+
+//ログオンの際に必要な制御クラス
+
+import to.Employee;
+
+
 public class LogonController {
 
 	// メソッド：ログオンを依頼する
