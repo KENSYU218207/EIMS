@@ -20,18 +20,18 @@ public class DeleteController extends HttpServlet {
 		request.setCharacterEncoding("Windows-31J");
 
 		// 削除ボタンが押されたときに引き渡される値
-		String id = request.getParameter("emp_id");
-		String lname = request.getParameter("emp_lname");
-		String lkana = request.getParameter("emp_lkana");
-		String fname = request.getParameter("emp_fname");
-		String fkana = request.getParameter("emp_fkana");
+		String id = request.getParameter("empno");
+		String lname = request.getParameter("lname");
+		String lkana = request.getParameter("lkana");
+		String fname = request.getParameter("fname");
+		String fkana = request.getParameter("fkana");
 
 		HttpSession session = request.getSession();
-		session.setAttribute("emp_id", id);
-		session.setAttribute("emp_lname", lname);
-		session.setAttribute("emp_lkana", lkana);
-		session.setAttribute("emp_fname", fname);
-		session.setAttribute("emp_fkana", fkana);
+		session.setAttribute("empno", id);
+		session.setAttribute("lname", lname);
+		session.setAttribute("lkana", lkana);
+		session.setAttribute("fname", fname);
+		session.setAttribute("fkana", fkana);
 
 		// HTML部分開始
 		response.setContentType("text/html; charset=Windows-31J");
@@ -44,14 +44,24 @@ public class DeleteController extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 
-		if(dao.EmployerDao.deleteEmployee(id)){
-		out.println("<h2>削除しました。</h2>");
-		}else{
-		out.println("<h2>削除できませんでした。</h2>");
+		out.println(id);
+		out.println("<br>");
+		out.println(lname);
+		out.println("<br>");
+		out.println(fname);
+		out.println("<br>");
+		out.println(lkana);
+		out.println("<br>");
+		out.println(fkana);
+		out.println("<br>");
+
+		if (dao.EmployerDao.deleteEmployee(id)) {
+			out.println("<h2>削除しました。</h2>");
+		} else {
+			out.println("<h2>削除できませんでした。</h2>");
 		}
 
-
-//		out.println("<h3>ここまではとりあえずok!</h3>");
+		// out.println("<h3>ここまではとりあえずok!</h3>");
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
