@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -86,16 +85,18 @@ public class AddController extends HttpServlet {
 		addUser.setGender(Integer.parseInt(gender));
 		addUser.setDeptno(Integer.parseInt(deptno));
 
-
+		out.println("<br>");
+		out.println("<br>");
+		out.println("<br>");
 		if(dao.EmployerDao.addEmployee(addUser)){
 		out.println("<h2>追加しました。</h2>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
-		 out.println("<input type=\"submit\" value=\"検索画面に戻る\">");
+		 out.println("<input class=\"button\" type=\"submit\" value=\"検索画面に戻る\">");
 		 out.println("</form>");
 		}else{
 		out.println("<h2>DBへの接続に失敗しました。</h2>");
 		out.println("<form action=\"AddConfirmServlet\" method=\"post\">");
-		 out.println("<input type=\"submit\" value=\"確認画面に戻る\">");
+		 out.println("<input  class=\"button\" type=\"submit\" value=\"確認画面に戻る\">");
 		 out.println("</form>");
 		}
 		out.println("<br>");

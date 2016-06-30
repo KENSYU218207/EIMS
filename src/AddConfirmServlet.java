@@ -9,12 +9,13 @@ import javax.servlet.http.HttpSession;
 
 public class AddConfirmServlet extends HttpServlet {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//		ArrayList<Employee> list = null;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// ArrayList<Employee> list = null;
 
 		request.setCharacterEncoding("Windows-31J");
 
-		//追加画面で入力された情報格納
+		// 追加画面で入力された情報格納
 		String empno = request.getParameter("addempno");
 		String lname = request.getParameter("addlname");
 		String fname = request.getParameter("addfname");
@@ -35,10 +36,10 @@ public class AddConfirmServlet extends HttpServlet {
 		session.setAttribute("adddeptno", deptno);
 
 		/*
-		 * BusinessLogic bl = new BusinessLogic();
-		 * list = bl.selectProducts(type, keyword);
+		 * BusinessLogic bl = new BusinessLogic(); list =
+		 * bl.selectProducts(type, keyword);
 		 */
-		//		list = dao.EmployerDao.selectEmployees();
+		// list = dao.EmployerDao.selectEmployees();
 
 		response.setContentType("text/html; charset=Windows-31J");
 
@@ -50,29 +51,29 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>追加確認ページ</h1>");
-		//社員番号の表示
-		//		out.println(userid);
+		// 社員番号の表示
+		// out.println(userid);
 		out.println("<br>");
 		out.println("<br>");
 		out.println("<br>");
-		//		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
+		// out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
 		out.println("<form action=\"AddController\" method=\"post\">");
 		out.println("<h2>以下の情報で登録します。よろしいですか？</h2>");
-		out.println(empno);
-		out.println("<br>");
-		out.println(lname);
-		out.println("<br>");
-		out.println(fname);
-		out.println("<br>");
-		out.println(lkana);
-		out.println("<br>");
-		out.println(fkana);
-		out.println("<br>");
-		out.println(gender);
-		out.println("<br>");
-		out.println(deptno);
-		out.println("<br>");
+		out.println("社員番号：" + empno);
+		out.println("<br><br>");
+		out.println("氏：" + lname);
+		out.println("<br><br>");
+		out.println("名：" + fname);
+		out.println("<br><br>");
+		out.println("氏(カナ)：" + lkana);
+		out.println("<br><br>");
+		out.println("名(カナ)：" + fkana);
+		out.println("<br><br>");
+		out.println("性別：" + gender);
+		out.println("<br><br>");
+		out.println("所属コード" + deptno);
+		out.println("<br><br>");
 
 		out.println("<input type=\"hidden\" name=\"empno\" value=\"" + empno + "\" />");
 		out.println("<input type=\"hidden\" name=\"lname\" value=\"" + lname + "\" />");
@@ -82,7 +83,7 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"password\" value=\"" + password + "\" />");
 		out.println("<input type=\"hidden\" name=\"gender\" value=\"" + gender + "\" />");
 		out.println("<input type=\"hidden\" name=\"deptno\" value=\"" + deptno + "\" />");
-		out.println("<input type=\"submit\" value=\"追加する\">");
+		out.println("<input  class=\"button\" type=\"submit\" value=\"追加する\">");
 		out.println("</form>");
 		out.println("<form action=\"AddServlet\" method=\"post\">");
 		out.println("<input type=\"hidden\" name=\"addempno\" value=\"" + empno + "\" />");
@@ -93,7 +94,7 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"addpassword\" value=\"" + password + "\" />");
 		out.println("<input type=\"hidden\" name=\"addgender\" value=\"" + gender + "\" />");
 		out.println("<input type=\"hidden\" name=\"adddeptno\" value=\"" + deptno + "\" />");
-		out.println("<input type=\"submit\" value=\"キャンセル\">");
+		out.println("<input  class=\"button\" type=\"submit\" value=\"キャンセル\">");
 		out.println("</form>");
 
 		out.println("<br>");

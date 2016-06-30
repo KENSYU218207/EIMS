@@ -42,6 +42,8 @@ public class DeleteConfirmServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 
+
+		out.println("<br><br>");
 		out.println("<form action=\"DeleteController\" method=\"post\">");
 		out.println("<h2>以下の情報を削除します。本当によろしいですか？</h2>");
 		out.println("社員番号：" + id);
