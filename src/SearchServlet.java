@@ -102,12 +102,12 @@ public class SearchServlet extends HttpServlet {
 			out.println("</form>");
 		}
 		out.println("<br>");
-		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
-			out.println("<form action=\"EditServlet\" method=\"post\">");
-			out.println("<input type=\"submit\" value=\"変更\">");
-			out.println("</form>");
-		}
-		out.println("<br>");
+//		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
+//			out.println("<form action=\"EditServlet\" method=\"post\">");
+//			out.println("<input type=\"submit\" value=\"変更\">");
+//			out.println("</form>");
+//		}
+//		out.println("<br>");
 
 		out.println("<form action=\"index.html\" method=\"post\">");
 		out.println("<input type=\"submit\" value=\"ログアウト\">");
