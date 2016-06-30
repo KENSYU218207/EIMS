@@ -74,14 +74,14 @@ public class SearchServlet extends HttpServlet {
 		out.println("<body>");
 		out.println("<h1>検索ページ</h1>");
 		// 社員番号の表示
-		out.println(userid);
-		out.println("<br>");
+//		out.println(userid);
+//		out.println("<br>");
 		// パスワードの表示
-		out.println(password);
-		out.println("<br>");
+//		out.println(password);
+//		out.println("<br>");
 		// パスワードの表示
-		out.println(keyword);
-		out.println("<br>");
+//		out.println(keyword);
+//		out.println("<br>");
 		// 各種チェック
 		// password と人事部チェック
 		//LogonController.sendLogon(userid, password);
