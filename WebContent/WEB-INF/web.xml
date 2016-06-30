@@ -47,6 +47,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>AddCheckController</display-name>
+		<servlet-name>AddCheckController</servlet-name>
+		<servlet-class>controller.AddCheckController</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>EditController</display-name>
 		<servlet-name>EditController</servlet-name>
 		<servlet-class>controller.EditController</servlet-class>
@@ -107,6 +114,10 @@
 	<servlet-mapping>
 		<servlet-name>AddController</servlet-name>
 		<url-pattern>/AddController</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>AddCheckController</servlet-name>
+		<url-pattern>/AddCheckController</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LogonServlet</servlet-name>
