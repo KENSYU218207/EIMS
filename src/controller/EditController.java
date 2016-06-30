@@ -61,7 +61,7 @@ public class EditController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>社員情報追加確認</title>");
+		out.println("<title>社員情報変更完了</title>");
 
 		out.println
 		("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
@@ -97,20 +97,19 @@ public class EditController extends HttpServlet {
 
 
 		if(dao.EmployerDao.editEmployee(editUser)){
-		out.println("<h2>変更しました。</h2>");
+			out.println("<br>");
+			out.println("<br>");
+		out.println("<h2>変更完了しました。</h2>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
-		 out.println("<input type=\"submit\" value=\"検索画面に戻る\">");
+		 out.println("<input class=\"button\" type=\"submit\" value=\"検索画面に戻る\">");
 		 out.println("</form>");
 		}else{
 		out.println("<h2>変更できませんでした。</h2>");
 		out.println("<form action=\"EditConfirmServlet\" method=\"post\">");
-		 out.println("<input type=\"submit\" value=\"確認画面に戻る\">");
+		 out.println("<input class=\"button\" type=\"submit\" value=\"確認画面に戻る\">");
 		 out.println("</form>");
 
 		}
-		out.println("<br>");
-
-		out.println("<br>");
 
 		out.println("</body>");
 		out.println("</html>");

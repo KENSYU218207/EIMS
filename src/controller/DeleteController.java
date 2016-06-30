@@ -44,26 +44,28 @@ public class DeleteController extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 
-		out.println(id);
-		out.println("<br>");
-		out.println(lname);
-		out.println("<br>");
-		out.println(fname);
-		out.println("<br>");
-		out.println(lkana);
-		out.println("<br>");
-		out.println(fkana);
-		out.println("<br>");
+//		out.println(id);
+//		out.println("<br>");
+//		out.println(lname);
+//		out.println("<br>");
+//		out.println(fname);
+//		out.println("<br>");
+//		out.println(lkana);
+//		out.println("<br>");
+//		out.println(fkana);
+//		out.println("<br>");
 
+		out.println("<br>");
+		out.println("<br>");
 		if (dao.EmployerDao.deleteEmployee(id)) {
 			out.println("<h2>削除しました。</h2>");
 			out.println("<form action=\"SearchServlet\" method=\"post\">");
-			 out.println("<input type=\"submit\" value=\"検索画面に戻る\">");
+			 out.println("<input class=\"button\" type=\"submit\" value=\"検索画面に戻る\">");
 			 out.println("</form>");
 		} else {
 			out.println("<h2>削除できませんでした。</h2>");
 			out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
-			 out.println("<input type=\"submit\" value=\"確認画面に戻る\">");
+			 out.println("<input class=\"button\" type=\"submit\" value=\"確認画面に戻る\">");
 			 out.println("</form>");
 		}
 

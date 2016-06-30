@@ -54,32 +54,31 @@ public class EditConfirmServlet extends HttpServlet {
 		("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>変更確認ページ</h1>");
+		out.println("<h1>変更確認</h1>");
 		//社員番号の表示
-		out.println(id);
-		out.println("<br>");
-		out.println("<br>");
-		out.println("<br>");
+//		out.println(id);
+//		out.println("<br>");
+//		out.println("<br>");
 //		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
 		out.println("<form action=\"EditController\" method=\"post\">");
 		out.println("<h2>以下の情報で登録します。よろしいですか？</h2>");
-		out.println(id);
-		out.println("<br>");
-		out.println(lname);
-		out.println("<br>");
-		out.println(fname);
-		out.println("<br>");
-		out.println(lkana);
-		out.println("<br>");
-		out.println(fkana);
-		out.println("<br>");
-		out.println(gender);
-		out.println("<br>");
-		out.println(dept);
-		out.println("<br>");
-		out.println(password);
-		out.println("<br>");
+		out.println("社員番号：" + id);
+		out.println("<br><br>");
+		out.println("氏：" + lname);
+		out.println("<br><br>");
+		out.println("名：" + fname);
+		out.println("<br><br>");
+		out.println("氏(カナ)：" + lkana);
+		out.println("<br><br>");
+		out.println("名(カナ)：" + fkana);
+		out.println("<br><br>");
+		out.println("性別：" + gender);
+		out.println("<br><br>");
+		out.println("所属コード：" + dept);
+		out.println("<br><br>");
+		out.println("パスワード：" + password);
+		out.println("<br><br>");
 
 		out.println("<input type=\"hidden\" name=\"empno\" value=\""+id+"\" />");
 		out.println("<input type=\"hidden\" name=\"lname\" value=\""+lname+"\" />");
@@ -89,7 +88,7 @@ public class EditConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"password\" value=\""+password+"\" />");
 		out.println("<input type=\"hidden\" name=\"gender\" value=\""+gender+"\" />");
 		out.println("<input type=\"hidden\" name=\"deptno\" value=\""+dept+"\" />");
-		 out.println("<input class=\"buttons\" type=\"submit\" value=\"変更する\">");
+		 out.println("<input class=\"button\" type=\"submit\" value=\"変更する\">");
 		 out.println("</form>");
 			out.println("<form action=\"EditServlet\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"emp_id\" value=\""+id+"\" />");
@@ -100,12 +99,9 @@ public class EditConfirmServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"emp_pass\" value=\""+password+"\" />");
 			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\""+gender+"\" />");
 			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\""+dept+"\" />");
-			 out.println("<input class=\"buttons\" type=\"submit\" value=\"キャンセル\">");
+			 out.println("<input class=\"button\" type=\"submit\" value=\"キャンセル\">");
 			 out.println("</form>");
 
-		out.println("<br>");
-
-		out.println("<br>");
 
 		out.println("</body>");
 		out.println("</html>");
