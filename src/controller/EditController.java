@@ -108,7 +108,6 @@ public class EditController extends HttpServlet {
 		out.println("<form action=\"EditConfirmServlet\" method=\"post\">");
 		 out.println("<input class=\"button\" type=\"submit\" value=\"Šm”F‰æ–Ê‚É–ß‚é\">");
 		 out.println("</form>");
-
 		}
 
 		out.println("</body>");
