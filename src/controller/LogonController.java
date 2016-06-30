@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,16 +27,18 @@ public class LogonController extends HttpServlet {
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
 
-		boolean bool = sendLogon(userid, password);
+		boolean bool = false;
+		if (userid.length() != 0 && password.length() != 0) {
+			bool = sendLogon(userid, password);
+		}
 
 		response.setContentType("text/html; charset=Windows-31J");
-
-		PrintWriter out = response.getWriter();
 
 		// ログイン成功
 		if (bool == true) {
 			session.setAttribute("login", "OK");
-			String target = (String)session.getAttribute("target");
+			session.setAttribute("userid", userid);
+			session.setAttribute("password", password);
 			response.sendRedirect("http://localhost:8080/EIMS/SearchServlet");
 		}
 		//ログイン失敗
@@ -58,12 +59,7 @@ public class LogonController extends HttpServlet {
 		// 認証エラーの場合、ポップアップ表示
 		if (dao.EmployerDao.checkPassword(userid, password) == false) {
 			System.out.println("error password");
-<<<<<<< HEAD
-		}else{
-
-=======
 			return false;
->>>>>>> f29c1487c6555ce242bf5af0c53b585cc015f5b4
 		}
 
 		// 社員が人事である場合、追加削除変更を可能にする
