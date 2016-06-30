@@ -67,14 +67,10 @@ public class AddServlet extends HttpServlet {
 		out.println("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>追加ページ</h1>");
+		out.println("<h1>追加</h1>");
 
 		//社員番号の表示
 		//		out.println(userid);
-		out.println("<br>");
-
-		out.println("<br>");
-		out.println("<br>");
 		//		out.println("人事部チェック"+dao.EmployerDao.checkJinji(userid));
 
 		out.println("<form action=\"AddCheckController\" method=\"post\">");
@@ -84,10 +80,11 @@ public class AddServlet extends HttpServlet {
 
 		if (empnoCheck != null) {
 			if (empnoCheck.equals("NO")) {
-				out.println("<p>数字を入力してください</p>");
+				out.println("<p><font color=\"#ff6347\">数字を入力してください</font></p>");
 				session.setAttribute("empnoCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		out.println("氏：<input type=\"text\" name=\"addlname\" size=\"20\" value=\"" + lname + "\"><br>");
 
@@ -95,10 +92,11 @@ public class AddServlet extends HttpServlet {
 
 		if (lnameCheck != null) {
 			if (lnameCheck.equals("NO")) {
-				out.println("<p>1～20文字で入力してください</p>");
+				out.println("<p><font color=\"#ff6347\">1～20文字で入力してください</font></p>");
 				session.setAttribute("lnameCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		out.println("名：<input type=\"text\" name=\"addfname\" size=\"20\" value=\"" + fname + "\"><br>");
 
@@ -106,10 +104,11 @@ public class AddServlet extends HttpServlet {
 
 		if (fnameCheck != null) {
 			if (fnameCheck.equals("NO")) {
-				out.println("<p>1～20文字で入力してください</p>");
+				out.println("<p><font color=\"#ff6347\">1～20文字で入力してください</font></p>");
 				session.setAttribute("fnameCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		out.println("氏（カナ）：<input type=\"text\" name=\"addlkana\" size=\"20\" value=\"" + lkana + "\"><br>");
 
@@ -117,10 +116,11 @@ public class AddServlet extends HttpServlet {
 
 		if (lkanaCheck != null) {
 			if (lkanaCheck.equals("NO")) {
-				out.println("<p>1～50文字で入力してください</p>");
+				out.println("<p><font color=\"#ff6347\">1～50文字で入力してください</font></p>");
 				session.setAttribute("lkanaCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		out.println("名（カナ）：<input type=\"text\" name=\"addfkana\" size=\"20\" value=\"" + fkana + "\"><br>");
 
@@ -128,10 +128,11 @@ public class AddServlet extends HttpServlet {
 
 		if (fkanaCheck != null) {
 			if (fkanaCheck.equals("NO")) {
-				out.println("<p>1～50文字で入力してください</p>");
+				out.println("<p><font color=\"#ff6347\">1～50文字で入力してください</font></p>");
 				session.setAttribute("fkanaCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		out.println("パスワード：<input type=\"password\" name=\"addpassword\" size=\"20\" value=\"" + password + "\"><br>");
 
@@ -139,10 +140,11 @@ public class AddServlet extends HttpServlet {
 
 		if (passwordCheck != null) {
 			if (passwordCheck.equals("NO")) {
-				out.println("<p>1～8文字で入力してください</p>");
+				out.println("<p><font color=\"#ff6347\">1～8文字で入力してください</font></p>");
 				session.setAttribute("passwordCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		if (gender.equals("1")) {
 			out.println(
@@ -154,13 +156,12 @@ public class AddServlet extends HttpServlet {
 			out.println(
 					"性別：<input type=\"radio\" name=\"addgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
 		}
-		out.println("<br>");
 
 		Object genderCheck = session.getAttribute("genderCheck");
 
 		if (genderCheck != null) {
 			if (genderCheck.equals("NO")) {
-				out.println("<p>性別を選択してください</p>");
+				out.println("<p><font color=\"#ff6347\">性別を選択してください</font></p>");
 				session.setAttribute("genderCheck", null);
 			}
 		}
@@ -192,10 +193,11 @@ public class AddServlet extends HttpServlet {
 
 		if (deptnoCheck != null) {
 			if (deptnoCheck.equals("NO")) {
-				out.println("<p>所属コードを選択してください</p>");
+				out.println("<p><font color=\"#ff6347\">所属コードを選択してください</font></p>");
 				session.setAttribute("deptnoCheck", null);
 			}
 		}
+		out.println("<br>");
 
 		out.println("<input class=\"button\" type=\"submit\" value=\"追加する\">");
 		out.println("</form>");
