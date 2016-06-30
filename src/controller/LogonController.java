@@ -37,6 +37,7 @@ public class LogonController extends HttpServlet {
 		// ƒƒOƒCƒ“¬Œ÷
 		if (bool == true) {
 			session.setAttribute("login", "OK");
+
 			session.setAttribute("userid", userid);
 			session.setAttribute("password", password);
 			response.sendRedirect("http://localhost:8080/EIMS/SearchServlet");
