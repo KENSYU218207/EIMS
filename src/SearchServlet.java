@@ -163,6 +163,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<td width=\"10%\">" + fname + "</td>");
 			out.println("<td width=\"10%\">" + fkana + "</td>");
 			out.println("<td width=\"10%\">" + dept + "</td>");
+			if (SearchController.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
 			out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
@@ -189,6 +190,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<input type=\"submit\" name=\"submit\" value=\"•ÏX\">");
 			out.println("</form>");
 			out.println("</td>");
+			}
 			out.println("</tr>");
 			out.println("<tr>");
 			/*
