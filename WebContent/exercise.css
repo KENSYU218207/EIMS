@@ -22,12 +22,20 @@ body {
 position:relative;
 }
 
-.buttons {
+.button {
 	font-family: "メイリオ", sans-serif;
 	font-size: 18px; background-color : #00ff7f;
 	border-color: #00ff7f;
 	width: 200px;
 	height: 50px;
+	background-color: #00ff7f;
+}
+.buttons {
+	font-family: "メイリオ", sans-serif;
+	font-size: 18px; background-color : #00ff7f;
+	border-color: #00ff7f;
+	width: 100px;
+	height: 30px;
 	background-color: #00ff7f;
 }
 .topDown{
