@@ -105,15 +105,15 @@ public class EmployerDao {
 			String sql = null;
 			if (bool == true) {
 				sql = "SELECT * " + "FROM employee LEFT OUTER JOIN department "
-						+ "ON employee.deptno = department.deptno " + "WHERE lname = " + "'" + keyword + "'" + " "
-						+ "OR fname = " + "'" + keyword + "'" + " " + "OR lkana = " + "'" + keyword + "'" + " "
-						+ "OR fkana = " + "'" + keyword + "'" + " " + "OR department.deptname = " + "'" + keyword + "'"
-						+ " " + "OR employee.deptno = " + "'" + keyword + "'" + " ";
+						+ "ON employee.deptno = department.deptno " + "WHERE lname LIKE " + "'%" + keyword + "%'" + " "
+						+ "OR fname LIKE " + "'%" + keyword + "%'" + " " + "OR lkana LIKE " + "'%" + keyword + "%'" + " "
+						+ "OR fkana LIKE " + "'%" + keyword + "%'" + " " + "OR department.deptname LIKE " + "'%" + keyword + "%'"
+						+ " " + "OR employee.deptno LIKE " + "'%" + keyword + "%'" + " ";
 			} else if (bool == false) {
 				sql = "SELECT * " + "FROM employee LEFT JOIN department " + "ON employee.deptno = department.deptno "
-						+ "WHERE lname = " + "'" + keyword + "'" + " " + "OR fname = " + "'" + keyword + "'" + " "
-						+ "OR lkana = " + "'" + keyword + "'" + " " + "OR fkana = " + "'" + keyword + "'" + " "
-						+ "OR department.deptname = " + "'" + keyword + "'" + " ";
+						+ "WHERE lname LIKE " + "'%" + keyword + "%'" + " " + "OR fname LIKE " + "'%" + keyword + "%'" + " "
+						+ "OR lkana LIKE " + "'%" + keyword + "%'" + " " + "OR fkana LIKE " + "'%" + keyword + "%'" + " "
+						+ "OR department.deptname LIKE " + "'%" + keyword + "%'" + " ";
 			}
 
 			stmt = con.createStatement();

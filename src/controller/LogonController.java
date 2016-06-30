@@ -49,7 +49,7 @@ public class LogonController extends HttpServlet {
 			out.println("<body onLoad=\"javascript:goPost();\">");
 			out.println("<form method=\"post\" action=\"SearchServlet\" id=\"frm\">");
 			out.println("<input type=\"hidden\" name=\"userid\" value=\"" + userid + "\">");
-			out.println("<input type=\"hidden\" name=\"password\" value=\""+ password + "\">");
+			out.println("<input type=\"hidden\" name=\"password\" value=\"" + password + "\">");
 			out.println("<input type=\"submit\"  value=\"submit\">");
 			out.println("</form>");
 			out.println("</body>");
@@ -76,8 +76,9 @@ public class LogonController extends HttpServlet {
 		//useridが数字じゃなかったらテキトウな数字を入れる
 		try {
 			Integer.parseInt(userid);
-		} catch (NumberFormatException nfex) {
-			userid="999999999";
+		}
+		catch (NumberFormatException nfex) {
+			userid = "999999999";
 		}
 
 		// 社員オブジェクトのインスタンスを生成
