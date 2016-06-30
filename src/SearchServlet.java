@@ -37,6 +37,7 @@ public class SearchServlet extends HttpServlet {
 		session.setAttribute("searchkey", keyword);
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
+		if(userid!=null)session.setAttribute("lastuser", userid);
 
 
 		list = dao.EmployerDao.selectEmployees(keyword);
@@ -63,6 +64,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("<title>メインページ</title>");
 
 		out.println("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
+
+		out.println("<script type=\"text/javascript\">");
+		out.println("<!--");
+		out.println("document.cookie=\"userid=\"+escape("+userid+")+\"; expires=\"+60*60*24*1000*1;");
+		out.println(" // -->");
+		out.println(" </script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>検索ページ</h1>");
@@ -89,13 +96,13 @@ public class SearchServlet extends HttpServlet {
 		out.println("<input type=\"submit\" value=\"検索\">");
 		out.println("</form>");
 
-		if (dao.EmployerDao.checkJinji(userid)) {
+		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<form action=\"AddServlet\" method=\"post\">");
 			out.println("<input type=\"submit\" value=\"追加\">");
 			out.println("</form>");
 		}
 		out.println("<br>");
-		if (dao.EmployerDao.checkJinji(userid)) {
+		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<form action=\"EditServlet\" method=\"post\">");
 			out.println("<input type=\"submit\" value=\"変更\">");
 			out.println("</form>");
