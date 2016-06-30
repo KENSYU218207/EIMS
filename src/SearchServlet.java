@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import to.Employee;
 import controller.SearchController;
+import to.Employee;
 
 
 public class SearchServlet extends HttpServlet {
@@ -31,12 +31,19 @@ public class SearchServlet extends HttpServlet {
 			// 前回検索条件をセッションから取り出し
 			keyword = (String) session.getAttribute("searchkey");
 		}
+		if (userid == null) {
+			// 前回検索条件をセッションから取り出し
+			userid = (String) session.getAttribute("userid");
+		}if (password == null) {
+			// 前回検索条件をセッションから取り出し
+			password = (String) session.getAttribute("password");
+		}
 
 
 		// 検索条件をセッションに保存
-		session.setAttribute("searchkey", keyword);
-		session.setAttribute("userid", userid);
-		session.setAttribute("password", password);
+		if(keyword!=null)session.setAttribute("searchkey", keyword);
+		if(userid!=null)session.setAttribute("userid", userid);
+		if(password!=null)session.setAttribute("password", password);
 		if(userid!=null)session.setAttribute("lastuser", userid);
 
 
@@ -74,11 +81,11 @@ public class SearchServlet extends HttpServlet {
 		out.println("<body>");
 		out.println("<h1>検索ページ</h1>");
 		// 社員番号の表示
-//		out.println(userid);
-//		out.println("<br>");
+		out.println(userid);
+		out.println("<br>");
 		// パスワードの表示
-//		out.println(password);
-//		out.println("<br>");
+		out.println(password);
+		out.println("<br>");
 		// パスワードの表示
 //		out.println(keyword);
 //		out.println("<br>");
