@@ -76,6 +76,9 @@ public class EditServlet extends HttpServlet {
 		 out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
 		 out.println("<input type=\"submit\" value=\"•ÏX‚·‚é\">");
 		 out.println("</form>");
+	 	 out.println("<form action=\"SearchServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"ƒLƒƒƒ“ƒZƒ‹\">");
+		 out.println("</form>");
 
 		out.println("<br>");
 

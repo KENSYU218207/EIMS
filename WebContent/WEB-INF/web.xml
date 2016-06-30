@@ -124,10 +124,6 @@
 		<servlet-name>DeleteController</servlet-name>
 		<url-pattern>/DeleteController</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
-		<servlet-name>LogonController</servlet-name>
-		<url-pattern>/LogonController</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>EditController</servlet-name>
 		<url-pattern>/EditController</url-pattern>

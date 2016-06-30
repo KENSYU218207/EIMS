@@ -99,6 +99,9 @@ public class DeleteServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"product_id\" value=\"" + id + "\">");
 			out.println("<input type=\"submit\" name=\"submit\" value=\"íœ\">");
 			out.println("</form>");
+		 	 out.println("<form action=\"SearchServlet\" method=\"post\">");
+			 out.println("<input type=\"submit\" value=\"ƒLƒƒƒ“ƒZƒ‹\">");
+			 out.println("</form>");
 			out.println("</td>");
 			out.println("</tr>");
 			out.println("<tr>");
