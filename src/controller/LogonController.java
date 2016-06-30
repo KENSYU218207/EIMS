@@ -48,8 +48,8 @@ public class LogonController extends HttpServlet {
 			out.println("</head>");
 			out.println("<body onLoad=\"javascript:goPost();\">");
 			out.println("<form method=\"post\" action=\"SearchServlet\" id=\"frm\">");
-			out.println("<input type=\"hidden\" name=\"userid\" value=\"postdata\">");
-			out.println("<input type=\"hidden\" name=\"password\" value=\"postdata\">");
+			out.println("<input type=\"hidden\" name=\"userid\" value=\"" + userid + "\">");
+			out.println("<input type=\"hidden\" name=\"password\" value=\""+ password + "\">");
 			out.println("<input type=\"submit\"  value=\"submit\">");
 			out.println("</form>");
 			out.println("</body>");
