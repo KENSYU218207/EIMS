@@ -83,16 +83,15 @@ public class SearchServlet extends HttpServlet {
 		out.println(" </script>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>検索ページ</h1>");
+		out.println("<h1>検索</h1>");
 		// 社員番号の表示
 		out.println("社員番号：" + userid);
-// out.println("         ");
+		out.println("         ");
 		// パスワードの表示
 		// out.println(password);
 		out.println("<form action=\"index.html\" method=\"post\">");
 		out.println("<input class=\"buttons\" type=\"submit\" value=\"ログアウト\">");
 		out.println("</form>");
-		out.println("<br>");
 		// パスワードの表示
 		// out.println(keyword);
 		// out.println("<br>");
@@ -124,7 +123,6 @@ public class SearchServlet extends HttpServlet {
 		// out.println("</form>");
 		// }
 		// out.println("<br>");
-
 
 		int count = 0;
 		if (list != null) {
@@ -171,24 +169,24 @@ public class SearchServlet extends HttpServlet {
 				System.out.println(pass);
 			}
 			out.println("<tr class=\"emp\">");
-			out.println("<td width=\"30%\">" + id + "</td>");
-			out.println("<td width=\"30%\">" + lname + " " + fname + "(" + lkana + " " + fkana + ")" + "</td>");
+			out.println("<td width=\"30%\" align=\"center\">" + id + "</td>");
+			out.println("<td width=\"30%\" align=\"center\">" + lname + " " + fname + "(" + lkana + " " + fkana + ")" + "</td>");
 			// out.println("<td width=\"10%\">" + lkana + " " + fkana +
 			// "</td>");
 			// out.println("<td width=\"10%\">" + fname + "</td>");
 			// out.println("<td width=\"10%\">" + fkana + "</td>");
 			if (dept == 100)
-				out.println("<td width=\"30%\">人事部</td>");
+				out.println("<td width=\"30%\" align=\"center\">人事部</td>");
 			else if (dept == 200)
-				out.println("<td width=\"30%\">経理部</td>");
+				out.println("<td width=\"30%\" align=\"center\">経理部</td>");
 			else if (dept == 300)
-				out.println("<td width=\"30%\">営業部</td>");
+				out.println("<td width=\"30%\" align=\"center\">営業部</td>");
 			else if (dept == 400)
-				out.println("<td width=\"30%\">企画部</td>");
+				out.println("<td width=\"30%\" align=\"center\">企画部</td>");
 			else if (dept == 500)
-				out.println("<td width=\"30%\">開発部</td>");
+				out.println("<td width=\"30%\" align=\"center\">開発部</td>");
 			else if (dept == 600)
-				out.println("<td width=\"30%\">総務部</td>");
+				out.println("<td width=\"30%\" align=\"center\">総務部</td>");
 
 			if (SearchController.checkJinji((String) session.getAttribute("lastuser"))) {
 				out.println("<td align=\"center\" valign=\"middle\">");
