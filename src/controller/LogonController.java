@@ -13,6 +13,8 @@ public class LogonController {
 		// 認証エラーの場合、ポップアップ表示
 		if (dao.EmployerDao.checkPassword(userid, password) == false) {
 			System.out.println("error password");
+		}else{
+
 		}
 
 		// 社員が人事である場合、追加削除変更を可能にする
