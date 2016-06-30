@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import to.Employee;
-
+import controller.SearchController;
 
 
 public class SearchServlet extends HttpServlet {
@@ -40,7 +40,7 @@ public class SearchServlet extends HttpServlet {
 		if(userid!=null)session.setAttribute("lastuser", userid);
 
 
-		list = dao.EmployerDao.selectEmployees(keyword);
+		list = SearchController.selectEmployees(keyword);
 
 		System.out.println("2"+keyword);
 /*
@@ -96,7 +96,7 @@ public class SearchServlet extends HttpServlet {
 		out.println("<input type=\"submit\" value=\"ŒŸõ\">");
 		out.println("</form>");
 
-		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
+		if (SearchController.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<form action=\"AddServlet\" method=\"post\">");
 			out.println("<input type=\"submit\" value=\"’Ç‰Á\">");
 			out.println("</form>");
