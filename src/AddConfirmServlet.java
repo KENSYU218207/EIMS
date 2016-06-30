@@ -1,14 +1,11 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import to.Employee;
 
 public class AddConfirmServlet extends HttpServlet {
 
@@ -89,7 +86,7 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"password\" value=\""+password+"\" />");
 		out.println("<input type=\"hidden\" name=\"gender\" value=\""+gender+"\" />");
 		out.println("<input type=\"hidden\" name=\"deptno\" value=\""+deptno+"\" />");
-		 out.println("<input type=\"submit\" value=\"追加する\">");
+		 out.println("<input class=\"buttons\" type=\"submit\" value=\"追加する\">");
 		 out.println("</form>");
 			out.println("<form action=\"AddServlet\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"addempno\" value=\""+empno+"\" />");
@@ -100,7 +97,7 @@ public class AddConfirmServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"addpassword\" value=\""+password+"\" />");
 			out.println("<input type=\"hidden\" name=\"addgender\" value=\""+gender+"\" />");
 			out.println("<input type=\"hidden\" name=\"adddeptno\" value=\""+deptno+"\" />");
-			 out.println("<input type=\"submit\" value=\"キャンセル\">");
+			 out.println("<input class=\"buttons\" type=\"submit\" value=\"キャンセル\">");
 			 out.println("</form>");
 
 

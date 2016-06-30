@@ -116,10 +116,10 @@ public class AddServlet extends HttpServlet {
 		 }else{
 			 out.println("所属コード：<select name=\"adddeptno\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
 		 }
-		 out.println("<input type=\"submit\" value=\"追加する\">");
+		 out.println("<input class=\"buttons\" type=\"submit\" value=\"追加する\">");
 		 out.println("</form>");
 	 	 out.println("<form action=\"SearchServlet\" method=\"post\">");
-		 out.println("<input type=\"submit\" value=\"キャンセル\">");
+		 out.println("<input class=\"buttons\" type=\"submit\" value=\"キャンセル\">");
 		 out.println("</form>");
 
 		out.println("<br>");

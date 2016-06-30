@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import to.Employee;
 import controller.SearchController;
+import to.Employee;
 
 
 public class SearchServlet extends HttpServlet {
@@ -93,12 +93,12 @@ public class SearchServlet extends HttpServlet {
 		out.println("<br>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println("<input type=\"text\" name=\"searchkey\" size=\"20\" value=\"\">");
-		out.println("<input type=\"submit\" value=\"検索\">");
+		out.println("<input class=\"buttons\" type=\"submit\" value=\"検索\">");
 		out.println("</form>");
 
 		if (SearchController.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<form action=\"AddServlet\" method=\"post\">");
-			out.println("<input type=\"submit\" value=\"追加\">");
+			out.println("<input class=\"buttons\" type=\"submit\" value=\"追加\">");
 			out.println("</form>");
 		}
 		out.println("<br>");
@@ -110,7 +110,7 @@ public class SearchServlet extends HttpServlet {
 //		out.println("<br>");
 
 		out.println("<form action=\"index.html\" method=\"post\">");
-		out.println("<input type=\"submit\" value=\"ログアウト\">");
+		out.println("<input class=\"buttons\" type=\"submit\" value=\"ログアウト\">");
 		out.println("</form>");
 
 		int count = 0;
@@ -174,7 +174,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_passr\" value=\"" + pass + "\">");
-			out.println("<input type=\"submit\" name=\"submit\" value=\"削除\">");
+			out.println("<input class=\"buttons\" type=\"submit\" name=\"submit\" value=\"削除\">");
 			out.println("</form>");
 			out.println("</td>");
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
@@ -187,7 +187,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
 			out.println("<input type=\"hidden\" name=\"emp_pass\" value=\"" + pass + "\">");
-			out.println("<input type=\"submit\" name=\"submit\" value=\"変更\">");
+			out.println("<input class=\"buttons\" type=\"submit\" name=\"submit\" value=\"変更\">");
 			out.println("</form>");
 			out.println("</td>");
 			}
