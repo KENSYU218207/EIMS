@@ -29,16 +29,15 @@ public class AddController extends HttpServlet {
 		String gender = request.getParameter("gender");
 		String deptno = request.getParameter("deptno");
 
-
 		HttpSession session = request.getSession();
-		session.setAttribute("empno", empno);
-		session.setAttribute("lname", lname);
-		session.setAttribute("fname", fname);
-		session.setAttribute("lkana", lkana);
-		session.setAttribute("fkana", fkana);
-		session.setAttribute("password", password);
-		session.setAttribute("gender", gender);
-		session.setAttribute("deptno", deptno);
+		if(empno!=null)session.setAttribute("empno", empno);
+		if(empno!=lname)session.setAttribute("lname", lname);
+		if(empno!=fname)session.setAttribute("fname", fname);
+		if(empno!=lkana)session.setAttribute("lkana", lkana);
+		if(empno!=fkana)session.setAttribute("fkana", fkana);
+		if(empno!=password)session.setAttribute("password", password);
+		if(empno!=gender)session.setAttribute("gender", gender);
+		if(empno!=deptno)session.setAttribute("deptno", deptno);
 
 
 

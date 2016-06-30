@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.SearchController;
 import to.Employee;
-
-
 
 public class SearchServlet extends HttpServlet {
 
@@ -31,31 +30,43 @@ public class SearchServlet extends HttpServlet {
 			// 前回検索条件をセッションから取り出し
 			keyword = (String) session.getAttribute("searchkey");
 		}
-
+		if (userid == null) {
+			// 前回検索条件をセッションから取り出し
+			userid = (String) session.getAttribute("userid");
+		}
+		if (password == null) {
+			// 前回検索条件をセッションから取り出し
+			password = (String) session.getAttribute("password");
+		}
 
 		// 検索条件をセッションに保存
-		session.setAttribute("searchkey", keyword);
-		session.setAttribute("userid", userid);
-		session.setAttribute("password", password);
-		if(userid!=null)session.setAttribute("lastuser", userid);
+		if (keyword != null)
+			session.setAttribute("searchkey", keyword);
+		if (userid != null)
+			session.setAttribute("userid", userid);
+		if (password != null)
+			session.setAttribute("password", password);
+		if (userid != null)
+			session.setAttribute("lastuser", userid);
 
+		list = SearchController.selectEmployees(keyword);
 
-		list = dao.EmployerDao.selectEmployees(keyword);
-
-		System.out.println("2"+keyword);
-/*
-		BusinessLogic bl = new BusinessLogic();
-		list = bl.selectProducts(type, keyword);
-*/
-//		list = dao.EmployerDao.selectEmployees(keyword);
+		System.out.println("2" + keyword);
+		/*
+		 * BusinessLogic bl = new BusinessLogic(); list =
+		 * bl.selectProducts(type, keyword);
+		 */
+		// list = dao.EmployerDao.selectEmployees(keyword);
 		if (list != null) {
 			request.setAttribute("searchlist", list);
 		}
 
 		// に検索結果を転送する
-	/*	request.getRequestDispatcher("http://localhost:8080/EIMS/SearchServlet").
-			forward(request, response);
-*/
+		/*
+		 * request.getRequestDispatcher(
+		 * "http://localhost:8080/EIMS/SearchServlet"). forward(request,
+		 * response);
+		 */
 		response.setContentType("text/html; charset=Windows-31J");
 
 		PrintWriter out = response.getWriter();
@@ -67,24 +78,26 @@ public class SearchServlet extends HttpServlet {
 
 		out.println("<script type=\"text/javascript\">");
 		out.println("<!--");
-		out.println("document.cookie=\"userid=\"+escape("+userid+")+\"; expires=\"+60*60*24*1000*1;");
+		out.println("document.cookie=\"userid=\"+escape(" + userid + ")+\"; expires=\"+60*60*24*1000*1;");
 		out.println(" // -->");
 		out.println(" </script>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>検索ページ</h1>");
+		out.println("<h1>検索</h1>");
 		// 社員番号の表示
-		out.println(userid);
-		out.println("<br>");
+		out.println("社員番号：" + userid);
+		out.println("         ");
 		// パスワードの表示
-		out.println(password);
-		out.println("<br>");
+		// out.println(password);
+		out.println("<form action=\"index.html\" method=\"post\">");
+		out.println("<input class=\"buttons\" type=\"submit\" value=\"ログアウト\">");
+		out.println("</form>");
 		// パスワードの表示
-		out.println(keyword);
-		out.println("<br>");
+		// out.println(keyword);
+		// out.println("<br>");
 		// 各種チェック
 		// password と人事部チェック
-		//LogonController.sendLogon(userid, password);
+		// LogonController.sendLogon(userid, password);
 		/*
 		 * out.println("パスワードチェック："+
 		 * LogonController.sendLogon(userid,password)); out.println("<br>");
@@ -93,25 +106,23 @@ public class SearchServlet extends HttpServlet {
 		out.println("<br>");
 		out.println("<form action=\"SearchServlet\" method=\"post\">");
 		out.println("<input type=\"text\" name=\"searchkey\" size=\"20\" value=\"\">");
-		out.println("<input type=\"submit\" value=\"検索\">");
+		out.println("<input class=\"buttons\" type=\"submit\" value=\"検索\">");
 		out.println("</form>");
 
-		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
+		if (SearchController.checkJinji((String) session.getAttribute("lastuser"))) {
 			out.println("<form action=\"AddServlet\" method=\"post\">");
-			out.println("<input type=\"submit\" value=\"追加\">");
+			out.println("<input class=\"button\" type=\"submit\" value=\"社員の追加\">");
 			out.println("</form>");
 		}
 		out.println("<br>");
-		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
-			out.println("<form action=\"EditServlet\" method=\"post\">");
-			out.println("<input type=\"submit\" value=\"変更\">");
-			out.println("</form>");
-		}
-		out.println("<br>");
-
-		out.println("<form action=\"index.html\" method=\"post\">");
-		out.println("<input type=\"submit\" value=\"ログアウト\">");
-		out.println("</form>");
+		// if
+		// (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser")))
+		// {
+		// out.println("<form action=\"EditServlet\" method=\"post\">");
+		// out.println("<input type=\"submit\" value=\"変更\">");
+		// out.println("</form>");
+		// }
+		// out.println("<br>");
 
 		int count = 0;
 		if (list != null) {
@@ -122,10 +133,11 @@ public class SearchServlet extends HttpServlet {
 		out.println("<table width=\"98%\" border=\"0\">");
 		out.println("<tr>");
 		out.println("<th width=\"10%\">社員番号</th>");
-		out.println("<th width=\"10%\">氏</th>");
-		out.println("<th width=\"10%\">氏（フリガナ）</th>");
-		out.println("<th width=\"10%\">名</th>");
-		out.println("<th width=\"10%\">名（フリガナ）</th>");
+		// out.println("<th width=\"10%\">氏</th>");
+		// out.println("<th width=\"10%\">氏（フリガナ）</th>");
+		// out.println("<th width=\"10%\">名</th>");
+		// out.println("<th width=\"10%\">名（フリガナ）</th>");
+		out.println("<th width=\"10%\">氏名(ﾌﾘｶﾞﾅ)</th>");
 		out.println("<th width=\"10%\">部署名</th>");
 
 		// out.println("<th width=\"30%\">部署名</th>");
@@ -157,38 +169,53 @@ public class SearchServlet extends HttpServlet {
 				System.out.println(pass);
 			}
 			out.println("<tr class=\"emp\">");
-			out.println("<td width=\"10%\">" + id + "</td>");
-			out.println("<td width=\"10%\">" + lname + "</td>");
-			out.println("<td width=\"10%\">" + lkana + "</td>");
-			out.println("<td width=\"10%\">" + fname + "</td>");
-			out.println("<td width=\"10%\">" + fkana + "</td>");
-			out.println("<td width=\"10%\">" + dept + "</td>");
-			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
-			out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
-			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
-			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
-			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_passr\" value=\"" + pass + "\">");
-			out.println("<input type=\"submit\" name=\"submit\" value=\"削除\">");
-			out.println("</form>");
-			out.println("</td>");
-			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
-			out.println("<form action=\"EditServlet\" method=\"post\">");
-			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname+ "\">");
-			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname+ "\">");
-			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
-			out.println("<input type=\"hidden\" name=\"emp_pass\" value=\"" + pass + "\">");
-			out.println("<input type=\"submit\" name=\"submit\" value=\"変更\">");
-			out.println("</form>");
-			out.println("</td>");
+			out.println("<td width=\"30%\" align=\"center\">" + id + "</td>");
+			out.println("<td width=\"30%\" align=\"center\">" + lname + " " + fname + "(" + lkana + " " + fkana + ")" + "</td>");
+			// out.println("<td width=\"10%\">" + lkana + " " + fkana +
+			// "</td>");
+			// out.println("<td width=\"10%\">" + fname + "</td>");
+			// out.println("<td width=\"10%\">" + fkana + "</td>");
+			if (dept == 100)
+				out.println("<td width=\"30%\" align=\"center\">人事部</td>");
+			else if (dept == 200)
+				out.println("<td width=\"30%\" align=\"center\">経理部</td>");
+			else if (dept == 300)
+				out.println("<td width=\"30%\" align=\"center\">営業部</td>");
+			else if (dept == 400)
+				out.println("<td width=\"30%\" align=\"center\">企画部</td>");
+			else if (dept == 500)
+				out.println("<td width=\"30%\" align=\"center\">開発部</td>");
+			else if (dept == 600)
+				out.println("<td width=\"30%\" align=\"center\">総務部</td>");
+
+			if (SearchController.checkJinji((String) session.getAttribute("lastuser"))) {
+				out.println("<td align=\"center\" valign=\"middle\">");
+				out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
+				out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_passr\" value=\"" + pass + "\">");
+				out.println("<input class=\"buttons\" type=\"submit\" name=\"submit\" value=\"削除\">");
+				out.println("</form>");
+				out.println("</td>");
+				out.println("<td align=\"center\" valign=\"middle\">");
+				out.println("<form action=\"EditServlet\" method=\"post\">");
+				out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_lname\" value=\"" + lname + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\"" + lkana + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_fname\" value=\"" + fname + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\"" + fkana + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_dept\" value=\"" + dept + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_gender\" value=\"" + gender + "\">");
+				out.println("<input type=\"hidden\" name=\"emp_pass\" value=\"" + pass + "\">");
+				out.println("<input class=\"buttons\" type=\"submit\" name=\"submit\" value=\"変更\">");
+				out.println("</form>");
+				out.println("</td>");
+			}
 			out.println("</tr>");
 			out.println("<tr>");
 			/*

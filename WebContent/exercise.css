@@ -1,17 +1,48 @@
-h1{
-  color: white;
-  background-color: deepskyblue;
-  padding: 5
+h1 {
+	padding: 5;
 }
 
-th{
-  background-color: lightgrey
+th {
+	background-color: lightgrey
 }
 
-.product{
-  background-color: #F5F5DC;
+.product {
+	background-color: #F5F5DC;
 }
 
-.description{
-  font-size: smaller
+.description {
+	font-size: smaller
+}
+
+body {
+	font-family: "メイリオ", sans-serif;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+position:relative;
+}
+
+.button {
+	font-family: "メイリオ", sans-serif;
+	font-size: 18px; background-color : #00ff7f;
+	border-color: #00ff7f;
+	width: 200px;
+	height: 50px;
+	background-color: #00ff7f;
+}
+.buttons {
+	font-family: "メイリオ", sans-serif;
+	font-size: 18px; background-color : #00ff7f;
+	border-color: #00ff7f;
+	width: 100px;
+	height: 30px;
+	background-color: #00ff7f;
+}
+.topDown{
+	width: 100%;
+	padding-Top: 100px;
+	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }

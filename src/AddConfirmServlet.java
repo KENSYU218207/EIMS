@@ -73,6 +73,7 @@ public class AddConfirmServlet extends HttpServlet {
 		out.println("<br>");
 		out.println(deptno);
 		out.println("<br>");
+
 		out.println("<input type=\"hidden\" name=\"empno\" value=\"" + empno + "\" />");
 		out.println("<input type=\"hidden\" name=\"lname\" value=\"" + lname + "\" />");
 		out.println("<input type=\"hidden\" name=\"fname\" value=\"" + fname + "\" />");
