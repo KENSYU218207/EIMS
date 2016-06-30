@@ -31,6 +31,17 @@ public class EditServlet extends HttpServlet {
 		String password = request.getParameter("emp_pass");
 		System.out.println(password);
 
+		if(id==null||lname==null||fname==null||lkana==null||fkana==null||password==null||gender==null||dept==null){
+			id="";
+			lname="";
+			fname="";
+			lkana="";
+			fkana="";
+			password="";
+			gender="";
+			dept="";
+		}
+
 		//ログイン画面で入力された社員番号格納
 
 //		String userid = request.getParameter("userid");
@@ -71,10 +82,35 @@ public class EditServlet extends HttpServlet {
 		 out.println("氏(カナ)：<input type=\"text\" name=\"editlkana\" size=\"20\" value=\"" + lkana + "\"><br>");
 		 out.println("名(カナ)：<input type=\"text\" name=\"editfkana\" size=\"20\" value=\"" + fkana + "\"><br>");
 		 out.println("パスワード：<input type=\"password\" name=\"editpassword\" size=\"20\" value=\"" + password + "\"><br>");
-		 out.println("性別：<input type=\"radio\" name=\"editgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
-		 out.println("所属先：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">人事部</option><option value=\"200\">経理部</option><option value=\"300\">営業部</option><option value=\"400\">企画部</option><option value=\"500\">開発部</option><option value=\"600\">総務部</option></select><br>");
+//		 out.println("性別：<input type=\"radio\" name=\"editgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
+		 if(gender.equals("1")){
+			 out.println("性別：<input type=\"radio\" name=\"editgender\" value=\"1\" checked>男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
+		 }else if(gender.equals("2")){
+			 out.println("性別：<input type=\"radio\" name=\"editgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\" checked>女性<br>");
+		 }else{
+			 out.println("性別：<input type=\"radio\" name=\"editgender\" value=\"1\">男性    <input type=\"radio\" name=\"addgender\" value=\"2\">女性<br>");
+		 }
+//		 out.println("所属先：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">人事部</option><option value=\"200\">経理部</option><option value=\"300\">営業部</option><option value=\"400\">企画部</option><option value=\"500\">開発部</option><option value=\"600\">総務部</option></select><br>");
+		 if(dept.equals("100")){
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\" selected>100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
+		 }else if(dept.equals("200")){
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\" selected>200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
+		 }else if(dept.equals("300")){
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\" selected>300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
+		 }else if(dept.equals("400")){
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\" selected>400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
+		 }else if(dept.equals("500")){
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\" selected>500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
+		 }else if(dept.equals("600")){
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\" selected>600：総務部</option></select><br>");
+		 }else{
+			 out.println("所属コード：<select name=\"editdept\"><option value=\"none\">-</option><option value=\"100\">100：人事部</option><option value=\"200\">200：経理部</option><option value=\"300\">300：営業部</option><option value=\"400\">400：企画部</option><option value=\"500\">500：開発部</option><option value=\"600\">600：総務部</option></select><br>");
+		 }
 		 out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
 		 out.println("<input type=\"submit\" value=\"変更する\">");
+		 out.println("</form>");
+	 	 out.println("<form action=\"SearchServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"キャンセル\">");
 		 out.println("</form>");
 
 		out.println("<br>");

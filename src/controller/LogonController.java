@@ -48,8 +48,8 @@ public class LogonController extends HttpServlet {
 			out.println("</head>");
 			out.println("<body onLoad=\"javascript:goPost();\">");
 			out.println("<form method=\"post\" action=\"SearchServlet\" id=\"frm\">");
-			out.println("<input type=\"hidden\" name=\"userid\" value=\"postdata\">");
-			out.println("<input type=\"hidden\" name=\"password\" value=\"postdata\">");
+			out.println("<input type=\"hidden\" name=\"userid\" value=\"" + userid + "\">");
+			out.println("<input type=\"hidden\" name=\"password\" value=\""+ password + "\">");
 			out.println("<input type=\"submit\"  value=\"submit\">");
 			out.println("</form>");
 			out.println("</body>");
@@ -58,6 +58,7 @@ public class LogonController extends HttpServlet {
 
 			session.setAttribute("userid", userid);
 			session.setAttribute("password", password);
+			session.setAttribute("searchkey", "");
 			response.sendRedirect("http://localhost:8080/EIMS/SearchServlet");
 		}
 		//ログイン失敗
@@ -72,12 +73,20 @@ public class LogonController extends HttpServlet {
 	public static boolean sendLogon(String userid, String password) {
 		// ログオン画面で入力された[社員番号・パスワード]を社員DAOに引き渡す
 
+		//useridが数字じゃなかったらテキトウな数字を入れる
+		try {
+			Integer.parseInt(userid);
+		} catch (NumberFormatException nfex) {
+			userid="999999999";
+		}
+
 		// 社員オブジェクトのインスタンスを生成
 		Employee emp = new Employee(userid, password);
 
 		// 認証エラーの場合、ポップアップ表示
 		if (dao.EmployerDao.checkPassword(userid, password) == false) {
 			System.out.println("error password");
+
 			return false;
 		}
 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import to.Employee;
-
+import controller.SearchController;
 
 
 public class SearchServlet extends HttpServlet {
@@ -40,7 +40,7 @@ public class SearchServlet extends HttpServlet {
 		if(userid!=null)session.setAttribute("lastuser", userid);
 
 
-		list = dao.EmployerDao.selectEmployees(keyword);
+		list = SearchController.selectEmployees(keyword);
 
 		System.out.println("2"+keyword);
 /*
@@ -74,14 +74,14 @@ public class SearchServlet extends HttpServlet {
 		out.println("<body>");
 		out.println("<h1>検索ページ</h1>");
 		// 社員番号の表示
-		out.println(userid);
-		out.println("<br>");
+//		out.println(userid);
+//		out.println("<br>");
 		// パスワードの表示
-		out.println(password);
-		out.println("<br>");
+//		out.println(password);
+//		out.println("<br>");
 		// パスワードの表示
-		out.println(keyword);
-		out.println("<br>");
+//		out.println(keyword);
+//		out.println("<br>");
 		// 各種チェック
 		// password と人事部チェック
 		//LogonController.sendLogon(userid, password);
@@ -96,18 +96,18 @@ public class SearchServlet extends HttpServlet {
 		out.println("<input type=\"submit\" value=\"検索\">");
 		out.println("</form>");
 
-		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
+		if (SearchController.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<form action=\"AddServlet\" method=\"post\">");
 			out.println("<input type=\"submit\" value=\"追加\">");
 			out.println("</form>");
 		}
 		out.println("<br>");
-		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
-			out.println("<form action=\"EditServlet\" method=\"post\">");
-			out.println("<input type=\"submit\" value=\"変更\">");
-			out.println("</form>");
-		}
-		out.println("<br>");
+//		if (dao.EmployerDao.checkJinji((String)session.getAttribute("lastuser"))) {
+//			out.println("<form action=\"EditServlet\" method=\"post\">");
+//			out.println("<input type=\"submit\" value=\"変更\">");
+//			out.println("</form>");
+//		}
+//		out.println("<br>");
 
 		out.println("<form action=\"index.html\" method=\"post\">");
 		out.println("<input type=\"submit\" value=\"ログアウト\">");
@@ -163,6 +163,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<td width=\"10%\">" + fname + "</td>");
 			out.println("<td width=\"10%\">" + fkana + "</td>");
 			out.println("<td width=\"10%\">" + dept + "</td>");
+			if (SearchController.checkJinji((String)session.getAttribute("lastuser"))) {
 			out.println("<td rowspan=\"2\" align=\"center\" valign=\"middle\">");
 			out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
 			out.println("<input type=\"hidden\" name=\"emp_id\" value=\"" + id + "\">");
@@ -189,6 +190,7 @@ public class SearchServlet extends HttpServlet {
 			out.println("<input type=\"submit\" name=\"submit\" value=\"変更\">");
 			out.println("</form>");
 			out.println("</td>");
+			}
 			out.println("</tr>");
 			out.println("<tr>");
 			/*

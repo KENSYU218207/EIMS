@@ -91,6 +91,17 @@ public class EditConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"deptno\" value=\""+dept+"\" />");
 		 out.println("<input type=\"submit\" value=\"•ÏX‚·‚é\">");
 		 out.println("</form>");
+			out.println("<form action=\"EditServlet\" method=\"post\">");
+			out.println("<input type=\"hidden\" name=\"emp_id\" value=\""+id+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_lname\" value=\""+lname+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_fname\" value=\""+fname+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_lkana\" value=\""+lkana+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_fkana\" value=\""+fkana+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_pass\" value=\""+password+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_gender\" value=\""+gender+"\" />");
+			out.println("<input type=\"hidden\" name=\"emp_dept\" value=\""+dept+"\" />");
+			 out.println("<input type=\"submit\" value=\"ƒLƒƒƒ“ƒZƒ‹\">");
+			 out.println("</form>");
 
 		out.println("<br>");
 

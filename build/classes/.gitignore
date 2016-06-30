@@ -1,2 +1,11 @@
-/bl/
+/AddConfirmServlet.class
+/AddServlet.class
+/DeleteConfirmServlet.class
+/DeleteServlet.class
+/EditConfirmServlet.class
+/EditServlet.class
+/LogonServlet.class
+/SearchServlet.class
 /controller/
+/dao/
+/to/

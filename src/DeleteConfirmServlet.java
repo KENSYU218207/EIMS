@@ -62,8 +62,9 @@ public class DeleteConfirmServlet extends HttpServlet {
 		out.println("<input type=\"hidden\" name=\"fkana\" value=\"" + fkana + "\" />");
 		out.println("<input type=\"submit\" value=\"íœ‚·‚é\">");
 		out.println("</form>");
-
-		out.print("<a href=\"SearchServlet\">–ß‚é</a>");
+	 	 out.println("<form action=\"SearchServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"ƒLƒƒƒ“ƒZƒ‹\">");
+		 out.println("</form>");
 
 		out.println("</body>");
 		out.println("</html>");

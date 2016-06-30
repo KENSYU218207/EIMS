@@ -98,8 +98,15 @@ public class EditController extends HttpServlet {
 
 		if(dao.EmployerDao.editEmployee(editUser)){
 		out.println("<h2>変更しました。</h2>");
+		out.println("<form action=\"SearchServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"検索画面に戻る\">");
+		 out.println("</form>");
 		}else{
 		out.println("<h2>変更できませんでした。</h2>");
+		out.println("<form action=\"EditConfirmServlet\" method=\"post\">");
+		 out.println("<input type=\"submit\" value=\"確認画面に戻る\">");
+		 out.println("</form>");
+
 		}
 		out.println("<br>");
 

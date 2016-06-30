@@ -35,6 +35,7 @@ public class LogonServlet extends HttpServlet {
 		out.println("<head>");
 		out.println("<TITLE>ログインページ</TITLE>");
 		out.println("<LINK rel=\"stylesheet\"href=\"exercise.css\" type=\"text/css\">");
+
 		out.println("</head>");
 		out.println("<body>");
 
@@ -50,9 +51,11 @@ public class LogonServlet extends HttpServlet {
 		}
 
 		out.println("<form action=\"LogonController\" method=\"post\">");
+
 		out.println("社員番号：<input type=\"text\" name=\"userid\" size=\"20\"><br><br>");
 		out.println("パスワード：<input type=\"password\" name=\"password\" size=\"20\"><br><br>");
 		out.println("<input class=\"buttons\" type=\"submit\" value=\"ログイン\">");
+
 		out.println("</form>");
 		out.println("</div>");
 		out.println("</body>");

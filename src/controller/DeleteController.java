@@ -57,8 +57,14 @@ public class DeleteController extends HttpServlet {
 
 		if (dao.EmployerDao.deleteEmployee(id)) {
 			out.println("<h2>削除しました。</h2>");
+			out.println("<form action=\"SearchServlet\" method=\"post\">");
+			 out.println("<input type=\"submit\" value=\"検索画面に戻る\">");
+			 out.println("</form>");
 		} else {
 			out.println("<h2>削除できませんでした。</h2>");
+			out.println("<form action=\"DeleteConfirmServlet\" method=\"post\">");
+			 out.println("<input type=\"submit\" value=\"確認画面に戻る\">");
+			 out.println("</form>");
 		}
 
 		// out.println("<h3>ここまではとりあえずok!</h3>");
