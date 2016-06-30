@@ -44,26 +44,22 @@ public class DeleteConfirmServlet extends HttpServlet {
 
 		out.println("<form action=\"DeleteController\" method=\"post\">");
 		out.println("<h2>以下の情報を削除します。本当によろしいですか？</h2>");
-		out.println(id);
-		out.println("<br>");
-		out.println(lname);
-		out.println("<br>");
-		out.println(fname);
-		out.println("<br>");
-		out.println(lkana);
-		out.println("<br>");
-		out.println(fkana);
-		out.println("<br>");
+		out.println("社員番号：" + id);
+		out.println("<br><br>");
+		out.println("名前：" + lname + " " + fname);
+		out.println("<br><br>");
+		out.println("フリガナ：" + lkana + " " + fkana);
+		out.println("<br><br>");
 
 		out.println("<input type=\"hidden\" name=\"empno\" value=\"" + id + "\" />");
 		out.println("<input type=\"hidden\" name=\"lname\" value=\"" + lname + "\" />");
 		out.println("<input type=\"hidden\" name=\"fname\" value=\"" + fname + "\" />");
 		out.println("<input type=\"hidden\" name=\"lkana\" value=\"" + lkana + "\" />");
 		out.println("<input type=\"hidden\" name=\"fkana\" value=\"" + fkana + "\" />");
-		out.println("<input class=\"buttons\" type=\"submit\" value=\"削除する\">");
+		out.println("<input class=\"button\" type=\"submit\" value=\"削除する\">");
 		out.println("</form>");
 	 	 out.println("<form action=\"SearchServlet\" method=\"post\">");
-		 out.println("<input class=\"buttons\" type=\"submit\" value=\"キャンセル\">");
+		 out.println("<input class=\"button\" type=\"submit\" value=\"キャンセル\">");
 		 out.println("</form>");
 
 		out.println("</body>");
