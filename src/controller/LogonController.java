@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +38,23 @@ public class LogonController extends HttpServlet {
 		// ƒƒOƒCƒ“¬Œ÷
 		if (bool == true) {
 			session.setAttribute("login", "OK");
+
+			PrintWriter out = response.getWriter();
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<script>");
+			out.println("function goPost() { frm.submit(); }");
+			out.println("</script>");
+			out.println("</head>");
+			out.println("<body onLoad=\"javascript:goPost();\">");
+			out.println("<form method=\"post\" action=\"SearchServlet\" id=\"frm\">");
+			out.println("<input type=\"hidden\" name=\"userid\" value=\"postdata\">");
+			out.println("<input type=\"hidden\" name=\"password\" value=\"postdata\">");
+			out.println("<input type=\"submit\"  value=\"submit\">");
+			out.println("</form>");
+			out.println("</body>");
+			out.println("</html>");
+			out.close();
 
 			session.setAttribute("userid", userid);
 			session.setAttribute("password", password);
