@@ -27,18 +27,24 @@ public class LogonController extends HttpServlet {
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
 
-		boolean bool = sendLogon(userid, password);
+		boolean bool = false;
+		if (userid.length() != 0 && password.length() != 0) {
+			bool = sendLogon(userid, password);
+		}
+
+		response.setContentType("text/html; charset=Windows-31J");
 
 		// ログイン成功
 		if (bool == true) {
 			session.setAttribute("login", "OK");
-			String target = (String)session.getAttribute("target");
-			response.sendRedirect(target);
+			session.setAttribute("userid", userid);
+			session.setAttribute("password", password);
+			response.sendRedirect("http://localhost:8080/EIMS/SearchServlet");
 		}
 		//ログイン失敗
 		else {
 			session.setAttribute("status", "NO");
-			response.sendRedirect("C:/workspac/EIMS/src/LogonServlet");
+			response.sendRedirect("http://localhost:8080/EIMS/LogonServlet");
 		}
 
 	}

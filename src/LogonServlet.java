@@ -27,12 +27,6 @@ public class LogonServlet extends HttpServlet {
 		session.setAttribute("userid", userid);
 		session.setAttribute("password", password);
 
-		/*
-		 * BusinessLogic bl = new BusinessLogic();
-		 * list = bl.selectProducts(type, keyword);
-		 */
-		//		list = dao.EmployerDao.selectEmployees();
-
 		response.setContentType("text/html; charset=Windows-31J");
 
 		PrintWriter out = response.getWriter();
@@ -61,7 +55,7 @@ public class LogonServlet extends HttpServlet {
 
 		out.println("<input type=\"submit\" value=\"ƒƒOƒCƒ“\">");
 		out.println("</form>");
-		out.println(" </body>");
+		out.println("</body>");
 		out.println("</html>");
 		out.close();
 	}

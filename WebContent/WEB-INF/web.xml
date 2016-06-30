@@ -57,6 +57,11 @@
 		<servlet-class>LogonServlet</servlet-class>
 	</servlet>
 	<servlet>
+		<display-name>LogonController</display-name>
+		<servlet-name>LogonController</servlet-name>
+		<servlet-class>controller.LogonController</servlet-class>
+	</servlet>
+	<servlet>
 		<display-name>DeleteConfirmServlet</display-name>
 		<servlet-name>DeleteConfirmServlet</servlet-name>
 		<servlet-class>DeleteConfirmServlet</servlet-class>
@@ -65,11 +70,6 @@
 		<display-name>DeleteController</display-name>
 		<servlet-name>DeleteController</servlet-name>
 		<servlet-class>controller.DeleteController</servlet-class>
-	</servlet>
-		<servlet>
-		<display-name>LogonController</display-name>
-		<servlet-name>LogonController</servlet-name>
-		<servlet-class>controller.LogonController</servlet-class>
 	</servlet>
 	<servlet>
 		<display-name>EditServlet</display-name>
@@ -111,6 +111,10 @@
 	<servlet-mapping>
 		<servlet-name>LogonServlet</servlet-name>
 		<url-pattern>/LogonServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogonController</servlet-name>
+		<url-pattern>/LogonController</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>DeleteConfirmServlet</servlet-name>
