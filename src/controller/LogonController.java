@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,16 +30,20 @@ public class LogonController extends HttpServlet {
 
 		boolean bool = sendLogon(userid, password);
 
+		response.setContentType("text/html; charset=Windows-31J");
+
+		PrintWriter out = response.getWriter();
+
 		// ログイン成功
 		if (bool == true) {
 			session.setAttribute("login", "OK");
 			String target = (String)session.getAttribute("target");
-			response.sendRedirect(target);
+			response.sendRedirect("http://localhost:8080/EIMS/SearchServlet");
 		}
 		//ログイン失敗
 		else {
 			session.setAttribute("status", "NO");
-			response.sendRedirect("C:/workspac/EIMS/src/LogonServlet");
+			response.sendRedirect("http://localhost:8080/EIMS/LogonServlet");
 		}
 
 	}
