@@ -72,6 +72,13 @@ public class LogonController extends HttpServlet {
 	public static boolean sendLogon(String userid, String password) {
 		// ログオン画面で入力された[社員番号・パスワード]を社員DAOに引き渡す
 
+		//useridが数字じゃなかったらテキトウな数字を入れる
+		try {
+			Integer.parseInt(userid);
+		} catch (NumberFormatException nfex) {
+			userid="999999999";
+		}
+
 		// 社員オブジェクトのインスタンスを生成
 		Employee emp = new Employee(userid, password);
 
