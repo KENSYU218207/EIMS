@@ -69,7 +69,10 @@ public class EditServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>変更ページ</h1>");
-		//社員番号の表示
+
+		out.println(password);
+		out.println("<br>");
+
 		out.println("社員番号："+id);
 		out.println("<br>");
 		out.println("<br>");
