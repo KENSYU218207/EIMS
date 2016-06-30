@@ -108,12 +108,14 @@ public class EmployerDao {
 						+ "ON employee.deptno = department.deptno " + "WHERE lname LIKE " + "'%" + keyword + "%'" + " "
 						+ "OR fname LIKE " + "'%" + keyword + "%'" + " " + "OR lkana LIKE " + "'%" + keyword + "%'" + " "
 						+ "OR fkana LIKE " + "'%" + keyword + "%'" + " " + "OR department.deptname LIKE " + "'%" + keyword + "%'"
-						+ " " + "OR employee.deptno LIKE " + "'%" + keyword + "%'" + " ";
+						+ " " + "OR employee.deptno LIKE " + "'%" + keyword + "%'" + " "
+								+ "ORDER BY employee.empno ";
 			} else if (bool == false) {
 				sql = "SELECT * " + "FROM employee LEFT JOIN department " + "ON employee.deptno = department.deptno "
 						+ "WHERE lname LIKE " + "'%" + keyword + "%'" + " " + "OR fname LIKE " + "'%" + keyword + "%'" + " "
 						+ "OR lkana LIKE " + "'%" + keyword + "%'" + " " + "OR fkana LIKE " + "'%" + keyword + "%'" + " "
-						+ "OR department.deptname LIKE " + "'%" + keyword + "%'" + " ";
+						+ "OR department.deptname LIKE " + "'%" + keyword + "%'" + " "
+								+ "ORDER BY employee.empno ";
 			}
 
 			stmt = con.createStatement();
