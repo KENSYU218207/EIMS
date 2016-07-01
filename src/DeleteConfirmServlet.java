@@ -31,6 +31,7 @@ public class DeleteConfirmServlet extends HttpServlet {
 		session.setAttribute("emp_fname", fname);
 		session.setAttribute("emp_fkana", fkana);
 
+
 		// HTML•”•ªŠJŽn
 		response.setContentType("text/html; charset=Windows-31J");
 
@@ -41,7 +42,6 @@ public class DeleteConfirmServlet extends HttpServlet {
 		out.println("<link rel=\"stylesheet\" href=\"exercise.css\" type=\"text/css\">");
 		out.println("</head>");
 		out.println("<body>");
-
 
 		out.println("<br><br>");
 		out.println("<form action=\"DeleteController\" method=\"post\">");

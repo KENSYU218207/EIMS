@@ -96,6 +96,7 @@ public class EditController extends HttpServlet {
 		editUser.setDeptno(Integer.parseInt(deptno));
 
 
+
 		if(dao.EmployerDao.editEmployee(editUser)){
 			out.println("<br>");
 			out.println("<br>");
